@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>card</title>
+	<link rel="stylesheet" href="style/card.css">
+</head>
+<body>
+	<div id="container">
+		<div id="titlebar">
+		<img src="assets/o.png" alt="" onclick="maximize()"><img src="assets/x.png" alt="" onclick="window.open('https://omnipresence.neocities.org', '_self')">
+		</div>
+		<div id="banner">
+			<div id="pfpcon">
+				<img id="pfp" width="305px" src="assets/me.png" alt="">
+			</div>
+		</div>
+		<div id="subcon">
+			<h1>
+				I'm omni.
+			</h1>
+			<h3>@omnidisplay</h3>
+			<br>
+			<div class="desc">I'm a... | <marquee onmouseover="this.stop();" onmouseout="this.start();" id="mar">glitch-artist ▪ hexagon enthusiast ▪ asuramancer ▪ dæmonologist ▪ slopaphage ▪  1bit ditherphile ▪ circuit-bound dreamer ▪ fwuarker of chrominance subcarriers ▪ firefox hater ▪ raw onion eater ▪ insufferable arch user ▪ real mouth's #1 fan ▪ hypothetical victor of the end-times (according to my dreams) ▪ known't-er of most things ▪ poet in an engineers body (2x cringe) ▪ genuine creature and or homunculus ▪ I eated the other titles tbh</marquee> |</div>
+			<hr>
+			<h2>
+				You can reach me by...
+			</h2>
+			<div class="flexy">
+				<a href="https://www.instagram.com/omnidisplay/" class="cell" data-desc="I post my glitchart here!">Instagram <br> <sub>@omnidisplay</sub></a>
+				<inline class="cell" data-desc="im pretty active on this terribe app" onclick="copyDisc()">Discord <br> <sub>@omnidisplay</sub></inline>
+				<a href="mailto:adm@omni.vi" class="cell" data-desc="I check this biweekly">Email <sub>adm@omni.vi</sub></a>
+			</div>
+			<hr>
+			<h2>
+				You can stalk my...
+			</h2>
+			<div class="flexy">
+				<a href="https://neocities.org/site/omnipresence" class="cell" data-desc="Hey thats what I host this website on!!">Neocities Profile</a>
+				<a href="https://www.youtube.com/@omnidisplay" class="cell" data-desc="I sometimes post videos here">YouTube</a>
+				<a href="https://forum.agoraroad.com/index.php?members/omnidisplay.7155/" class="cell" data-desc="???-posting">Agora Road Profile</a>
+			</div>
+			<hr>
+			<h2>
+				You can sign my...
+			</h2>
+			<div class="flexy">
+				<a href="http://users3.smartgb.com/g/g.php?a=s&amp;i=g36-32988-ea" class="cell" data-desc="be nice!!">Guestbook</a>
+			</div>
+			<hr>
+			<h2>
+				Or you could check out my...
+			</h2>
+			<div class="flexy">
+				<a href="https://omnipresence.neocities.org/" class="cell" data-desc="It has cool stuff I promise">Sweet freaking website!</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		function maximize() {
+			console.log('trigger')
+			var con =  document.getElementById('container');
+			(con.classList.contains('max')) ? con.classList.remove('max') : con.classList.add('max');
+		}
+
+		function copyDisc() {
+			navigator.clipboard.writeText("@omnidisplay");
+			alert("Copied discord username to clipboard");
+		}
+	</script>
+	<div id="tooltip">test</div>
+	<script src="scripts/tooltip.js"></script>
+</body>
+</html>

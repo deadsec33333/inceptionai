@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>♢ AUTHENTICATE ♢</title>
+	<script src="scripts/auth.js"></script>
+	<script src="scripts/anim.js"></script>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="icon" href="assets/NHFR_ICON.png">
+</head>
+<body>
+<div id="pain">
+	<div class="container hiddencon" id="con">
+		<img src="assets/portal2.gif" alt="NO HOME FOR RAVENS" class="portal" id="portal">
+		<form action="javascript:auth(username.value, password.value)" class="auth" id="authform">
+			<input type="text" name="username" id="username" maxlength="30" required  autocomplete="off" placeholder="divinicide" pattern="^[a-zA-Z0-9]+$" title="USER TOKEN PROVIDED IN SECTION 12X OF ASCENSION CONFIRMATION">
+			<label for="username">AUTH.USER</label>
+			<input type="text" name="username" id="password" maxlength="30" required  autocomplete="off" placeholder="password" pattern="^[a-zA-Z0-9]+$" title="DEFAULT USER AUTH TOKEN PROVIDED IN SECTION 12Y OF ASCENSION CONFIRMATION">
+			<label for="password">AUTH.KEY</label>
+			<button type="submit" class="btn" id="login"> AUTHENTICATE </button>
+		</form>
+		<a href="help.html" id="info" class="btn">LEARN MORE</a> <br>
+		<a id="back" href="https://omnipresence.neocities.org" target="_self" class="btn">RETURN</a>
+	</div>
+</div>
+	<footer>
+		COPYRIGHT 20XX ASURACOM 
+		<br> BY AUTHENTICATING YOU CONSENT TO THE <a href="NHFR_AUA.pdf" target="_blank">ASCM AUTHORIZED USER AGREEMENT</a>
+	</footer>
+	<!-- 88480 9219 43823 23094 29930 -->
+
+
+
+	<!-- sines-and-cymbals.neocities.org/ -->
+	<audio style="display: none;" id="AIN">
+		<source src="assets/low_drum.mp3">
+	</audio>
+	<audio style="display: none;" id="AOU">
+		<source src="assets/error.mp3">
+	</audio>
+
+
+
+	<audio loop style="display:none" id="music">
+		<source src="assets/prototypek.mp3" type="audio/mp3">
+	</audio>
+	<script src="scripts/anim.js"></script>
+
+
+	<audio style="display:none" id="uiAud" type="audio/ogg">
+		<source src="assets/click.ogg">
+	</audio>
+	<script src="scripts/ui.js"></script>
+</body>
+</html>

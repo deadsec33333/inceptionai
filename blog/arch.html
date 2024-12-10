@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://cdn.discordapp.com/attachments/886105350309302292/937106510478213150/ico.png">
+	<title>YOU ARE NOT PREPARED</title>
+	<link rel="stylesheet" href="../style/blogbw.css" media="all">
+	<style>.c {
+			background: #111;
+			border: solid 1px rgb(134, 134, 134);
+			letter-spacing: 0;
+			padding: 0 4px;
+			font-size: 16px;
+		}
+		.todo {
+			display: block;
+			margin: 2ch;
+			color: red;
+			border: solid red 2px;
+			padding: 0.5ch;
+			text-align: center;
+			position: relative;
+		}
+		img {
+			image-rendering: auto;
+		}
+		.text img {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<header>		
+	  <a href="https://omnipresence.neocities.org/">
+			<img src="../assets/vi.png" alt="">
+		</a>             
+	</header>
+
+	<div class="text">
+	<h1 class="date"> ENTRY 21.09.2024 </h1>
+	<div>
+		<h1>An opinionated arch installation guide.</h1>
+		<h3 style="
+    color: gray;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.1em;
+">This article is compatible with lynx. You can read it from inside the arch install medium!</h3>
+        <span style="color:red">Installing Arch isn't hard</span>, but it can be overwhelming if you're not familiar with all the technologies that compose a (productive/userspace) linux system.
+        I recently built a new computer and had to refamiliarize myself with all the little things I did with my installation to make the system I'm familiar with, my goal with
+        this page is to create a simple (but very opinionated and direct) installation guide that is useful to myself and anyone else coming across this page.
+        <blockquote>This page is still very much W.I.P, I will probably add more stuff beyond the simple "base installation" eventually.</blockquote>
+        <hr>
+        <h2>Some initial notes</h2> 
+        Please don't use this guide as a definitive resource for an installation, every computer (and user) is different - you may have other needs. For example, I'm running
+        soley AMD as my experience with NVIDIA/Intel on linux has been nothing short of hellish - and thus I won't be talking about how to work with those devices. <br>
+        Additionally, arch has a lot of defaults that work for me. For example, I use an American English keyboard, which requires no additional configuration for a keyboard layout. <br>
+        <br>
+        All that being said, make sure you're also referencing the <a href="https://wiki.archlinux.org/title/Installation_guide">arch wiki installation guide</a>. This guide should be more-so considered my personal 
+        reccomendation on how to go about each individual step.
+		<br>
+		<br>
+		Also, I consistently advise those with limited experience to try installing arch to a virtual machine first, before bare-metal. If you're able to do it once, in a safer enviorment, it helps a lot with your confidence and understand of what's actually going on.
+		<div>
+			^ Im saying all this to cover my ass when something goes wrong. Not my fault :D
+		</div>
+		<hr>
+		<h2>Assumptions / Goals</h2>
+		By the end of this guide, you should have a baseline arch linux system installed with the following (opinionated) configuration;
+		<ul>
+			<li>Installing to a fresh machine (or seperate hard drive)</li>
+			<li>GRUB (UEFI)</li>
+			<li>Only two partitions / and /boot/</li>
+			<li>swapfile</li>
+			<li>basic helper stuff (networkmanager, bluez)</li>
+		</ul>
+        <hr>
+		<h2>Getting started</h2>
+		<a href="https://etcher.balena.io">Use balena etcher to flash the arch iso</a>
+		<br>
+		Make sure secure boot is off in your BIOS. Set your USB as the boot drive and get started :)
+		<br>
+		Wi-Fi is slow and often a pain to configure, if you can, use ethernet. Otherwise I reccomend using your phone as a USB tether (this is <i>always</i> how I install on a laptop). Both methods are plug-and-play.
+		<br>
+		Run a quick <span class="c">ping google.com</span> to make sure everythings working okay.
+		<img class="autoimg" src="../assets/arch/ping.png" alt="" />
+		<br>
+		<br>
+		Also verify your boot mode is UEFI by running <span class="c">cat /sys/firmware/efi/fw_platform_size</span>. This should output <span class="c">64</span>. If this file doesn't exist, it means you're booted in BIOS! If you're in BIOS, you'll have to boot into your bios settings and switch to UEFI. If your motherboard is old as shit and doesn't support UEFI, ignore my partitioning and grub installation instructions and follow <a href="https://wiki.archlinux.org/title/GRUB#BIOS_systems">these instructions instead</a>. (I FORGOT TO FOLLOW THIS STEP LOL)
+		<hr>
+
+
+		<h2>Da' Disks</h2>
+		The arch-wiki will reccomend using fdisk. I hate fdisk.
+		<div>
+			I love CLI for most things, but using fdisk is like pulling teeth - it's significantly more intuitive to use a TUI. There's no need to
+			be elitist about partitioning a disk.
+		</div>
+		Instead, we will be using cfdisk, which is also already installed on the archiso - it is a TUI interface for partitioning that makes your life significantly easier.
+		<br> <br>
+		First, run <span class="c">lsblk</span> to find the name of the disk you want to install to. In my case this is <span class="c">vba</span> (since im demoing this on a VM), but on bare-metal you'll typically either
+		see <span class="c">sdX</span> or <span class="c">nvmeXnY</span>. For the duration of this guide im gonna abbreviate this as <span class="c">DX</span>, just replace that with whatever diskname you have.
+		<img class="autoimg" src="../assets/arch/lsblk.png" alt="" />
+		<br>
+		Now, we can run <span class="c">cfdisk</span> to partition our disks...
+		<br> Select the <span class="c">GPT</span> label here,
+		<img class="autoimg" src="../assets/arch/gpt.png" alt="" />
+		First make a 1GB partition, set to <span class="c">EFI System</span>. This will be our /boot/ partition.
+		<img class="autoimg" src="../assets/arch/efi.gif" alt="" />
+		<br><br>
+		Then, make partition the rest of the disk to be <span class="c">linux filesystem</span>
+		<br><br>
+		<img class="autoimg" src="../assets/arch/linux-drive.gif" alt="" />
+		Finally, select <span class="c">write</span> to apply these changes and select quit. You can run <span class="c">lsblk</span> again to verify you know now have two partitions,
+		<img class="autoimg" src="../assets/arch/lsblk2.png" alt="" />
+		Now we need to format these partitions to their respective needed filesystems. The 1GB EFI partition needs to be FAT32, and can be formatted with the following command;
+		<blockquote data-title="make fat32 filesystem"><br><code>mkfs.fat -F32 /dev/DXp1</code></blockquote>
+		In my case, that looks like this;
+		<img class="autoimg" src="../assets/arch/fat32.png" alt="" />
+		Next, we need to format our "root" linux filesystem partition to be ext4;
+		<blockquote data-title="make ext4 filesyste"><br><code>mkfs.ext4 /dev/DXp2</code></blockquote>
+		In my case... 
+		<img class="autoimg" src="../assets/arch/ext4.png" alt="" />
+		Now we have to mount the drives, you can do that with the following commands; (make sure you use the right partition numbers!)
+		<blockquote data-title="mount drives"><code>
+mount /dev/DX2 /mnt
+mount --mkdir /dev/DX1 /mnt/boot</code></blockquote>
+		Once again, you can verify this was done properly with <span class="c">lsblk</span>
+		<img class="autoimg" src="../assets/arch/mount.png" alt="" />
+		<hr>
+		<h2>Installing the system</h2>
+		Once the disks are mounted, the main system packages can be installed using <span class="c">pacstrap</span>. To get our system started, run it with <span class="c">/mnt</span> as our target and with the following package names;
+		<blockquote data-title="pacstrap"><br><code>pacstrap /mnt base linux linux-firmware vim</code></blockquote>
+		If you're not familiar with the basics of vim, you can replace it with nano instead.
+		<br>
+		<br>
+		Now make yourself a nice cup of tea while it installs :)
+		<img class="autoimg" src="../assets/arch/pacstrap.png" alt="" />
+		Once that's done, we need to generate the fstab file. This is just a fancy table that tells arch how to mount disks at boot.
+		<blockquote data-title="Generate fstab"><br><code>genfstab -U /mnt >> /mnt/etc/fstab</code></blockquote>
+		You can verify that it was properly generated by <span class="c">cat</span>'ing the file.
+		<img class="autoimg" src="../assets/arch/fstab.png" alt="" />
+		After this, we can 'get into' our installation by using <span class="c">arch-chroot</span>;
+		<blockquote><code>arch-chroot /mnt</code></blockquote>
+		The look of your prompt should change;
+		<img class="autoimg" src="../assets/arch/chroot.png" alt="" />
+		<hr>
+		<h2>Making a "swapfile"</h2>
+		Typically, guides will reccomend that you make a swap <i>partition</i>. I beleive this is unnecessary and adds additional annoyances to the partitionng scheme.
+		Instead, we can make a swap <i>file</i> that lives in the root directory and is loaded after the main filesystem. <br> <br>
+		First, allocate some space for the swapfile - I usually do 2GB on bare metal, but I'm just gonna do 500Mb on this VM...
+		<blockquote data-title="allocate space for swapfile"><br><code>fallocate -l &lt;amount&gt; /swapfile</code></blockquote>
+		Then change the permissions of the file to 600...
+		<blockquote><code>chmod 600 /swapfile</code></blockquote>
+		Convert it to a swapfile with <span class="c">mkswap</span>...
+		<blockquote><code>mkswap /swapfile</code></blockquote>
+		Enable the swapfile with <span class="c">swapon</span>...
+		<blockquote><code>swapon /swapfile</code></blockquote>
+		Lastly, we need to add our swapfile to the fstab file so arch will mount it upon boot;
+		<blockquote data-title="add swapfile to fstab"><br><code>echo "/swapfile none swap defaults 0 0" >> /etc/fstab</code></blockquote>
+		Together, the process looks like this. (And once again, you can verify stuff with <span class="c">cat</span>)
+		<img class="autoimg" src="../assets/arch/swapfile.png" alt="" />
+		<hr>
+		<h2>Set timezone</h2>
+		Setting the timezone is relatively straightforward, just run these commands;
+		<blockquote data-title="set timezone"><code>
+ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+hwclock --systohc</code></blockquote>
+		<img class="autoimg" src="../assets/arch/timezone.png" alt="" />
+		<hr>
+		<h2>Set Locales</h2>
+		Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed UTF-8 locales. <br>
+		Then, generate the locales by running <span class="c">locale-gen</span> <br>
+		Then make locale.conf to set your locale;
+		<blockquote data-title="make locale.conf"><br><code>echo “LANG=en_US.UTF-8” > /etc/locale.conf</code></blockquote>
+		<img class="autoimg" src="../assets/arch/locale.png" alt="" />
+		<hr>
+		<h2>hostname and hosts-file</h2>
+		This is the most important stage of the installation, naming your computer! <br>
+		<div>
+		A good naming scheme for your machines is always good, an old professor of mine named his
+		computers off elements of the periodic table. Personally, I name my machines off words from <a href="https://www.dictionaryofobscuresorrows.com">The Dictionary of Obscure Sorrows</a>.
+		</div>
+		<blockquote data-title="set hostname"><br><code>echo "&lt;hostname&gt;" > /etc/hostname </code></blockquote>
+		Let's name this demo VM "watashiato"
+		<img class="autoimg" src="../assets/arch/hostname.png" alt="" />
+		Then edit your /etc/hosts file to look like this (use vim/nano)
+		<blockquote data-title="/etc/hosts">
+			<code>
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	&lt;hostname&gt;.localdomain		&lt;hostname&gt;	
+			</code>
+		</blockquote>
+		<img class="autoimg" src="../assets/arch/hosts.png" alt="" />
+		<hr>
+		<h2>Set root password</h2>
+		Pretty self-explanatory;
+		<blockquote><code>passwd (type in password)</code></blockquote>
+		<hr>
+		<h2>Bare minimum packages to get you started</h2>
+		Install packages with <span class="c">pacman -S</span>. I reccomend the following for the basis of a system;
+		<blockquote data-title="starting package list">
+			<code>
+pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober base-devel linux-headers reflector git bluez bluez-utils xdg-utils xdg-user-dirs</code>
+		</blockquote>
+		Additionally, if you're lazy and just want to install a Desktop Enviorment at this point, add it's bundle name here as well. <span class="c">gnome</span> for gnome, <span class="c">plasma</span> for KDE, <span class="c">xfce4 xfce4-goodies</span> for xfce4.
+		<br>
+		Personally, I'm insane and build my UI up from nothing with i3wm a bunch of other stuff, but no judgement for using a DE (unless it's gnome xd).
+		<hr>
+		<h2>GRUB</h2>
+		Like most, I use GRUB for my bootloader, it can be set-up with the following commands;
+		<blockquote data-title="grub setup"><code>
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg</code></blockquote>
+To be honest, GRUB is <i>usually</i> where shit goes wrong for 99% of people. I didn't have OVMF shit installed for my VM (and forgot) so this is where I stop providing screenshots from my VM.
+<img class="autoimg" src="../assets/arch/BIOS.png" alt="">
+	<hr>
+	<h2>Some final stuff before we reboot</h2>
+	Quickly enable a couple services so they're ready to go when we reboot;
+	<blockquote>
+<code>systemctl enable NetworkManager
+systemctl enable bluetooth</code></blockquote>
+Create your local user, and add them to the <span class="c">wheel</span> group...
+<blockquote><code>useradd -mG wheel &lt;username&gt;
+passwd &lt;username&gt; (type in password)
+</code></blockquote>
+You also need to edit the sudoers file such that the 'wheel' group actually means 'sudo privilages.' Run <span class="c">EDITOR=vim visudo</span> (or <span class="c">EDITOR=nano visudo</span>) and uncomment the following line;
+<blockquote data-title="uncomment this"><br><code>%wheel ALL=(ALL:ALL) ALL</code></blockquote>
+	<hr>
+	<h2>REBOOT AND PRAY</h2>
+	First, type <span class="c">exit</span> to exit out of chroot into your iso. Then type <span class="c">umount -a</span> to unmount everything (ignore any 'busy' messages). Finally, type <span class="c">reboot</span> to restart the system.
+	<br>
+	If everything went well you should reboot into GRUB, and from here into a working arch installation :D
+	<br>
+	<br>
+	then login...
+	<br>
+	Then connect to the internet with <span class="c">nmtui</span> (or with your DE if you installed one).
+	<br>
+	<br>
+	And finally, run <span class="c">pacman -S neofetch && neofetch</span>. Take a picture and share for bragging rights - you installed arch linux!
+	<br>
+	<hr>
+	<p class="todo">IOU: Post-installation stuff, getting a cool i3wm desktop configured.</p>
+	</div>
+	</div>
+	<footer>
+	~ 2024 ⬡ Omni ~ 
+	</footer>
+</body>
+</html>

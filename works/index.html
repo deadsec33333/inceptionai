@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WORKS</title>
+	<link rel="stylesheet" href="style/base.css">
+	<link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+	<div id="container">
+		<div id="display" data-state="">
+			<img src="assets/placeholder.png" alt="" id="THEIMAGE" onclick="window.open(this.src)">
+			<div id="desc">
+				Also note: You can click the big image here to open it fullscreen in a new tab.
+			</div>
+		</div>
+		<div id="gallery">
+			<p class="sechead">
+				<a class="button" onclick="indexCycle(-1)">Prev</a>
+				<b class="igt" onclick="toggleGallery()">/images/</b> <!-- togglegallery used for that tiny screen size issue, reference the end of main.css file -->
+				<a class="button" onclick="indexCycle(1)">Next</a>
+			</p>
+			<div id="header">
+				<p>
+					See my newest posts on <a href="https://instagram.com/omnidisplay/">instagram!</a> <br>
+					This is a brand new layout im testing, I went through a good chunk of effort to make this work on all screen sizes but I could always be missing something! If the gallery looks wrong or is difficult to use let me know! <br>
+					<hr>
+					Feel free to repost my works, however please give credit. If you are looking to download one of my pieces that are not here, feel free to <a href="https://omnipresence.neocities.org/card/">contact me.</a> 
+					<hr>
+					Since these images have fine details, it is reccomended that you fullscreen this page to view everything.
+					<hr>
+					<div id="filtercon">
+						<form action="javascript:nameFilter(query.value)" id="namesearch">
+							<input placeholder="SEARCH" type="text" id="query" name="query" autocomplete="off"> <br>
+							<p class="details">search takes any valid JS regex expression, try depr|anx <br> YYYY-MM-DD date queries work too.</p> <!-- shit like 05-(?:0[1-9]|2[1-9]|3[0-2])- for in may of any year :^) -->
+							
+							<p id="perf"></p>
+							<button class="filterbt" type="submit"> SEARCH </button>
+							<a class="filterbt" onclick="searchReset()">RESET</a>
+						</form>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/main.js"></script>
+	<script src="scripts/loadindex.js"></script>
+	<div id="controls">
+		<a onclick="indexCycle(-1)">Prev</a>
+		<a onclick="indexCycle(1)">Next</a>
+	</div>
+	<script src="scripts/extra.js"></script>
+</body>
+</html>

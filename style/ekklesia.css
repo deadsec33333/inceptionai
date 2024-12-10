@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "alt";
+    src: url(../assets/pixel-font7.regular.ttf);
+}
+
+@font-face {
+    font-family: "light";
+    src: url(../assets/piksel.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Declare Vars */
+:root {
+    --bgc: black;
+    --textc: #d5fff5;
+    --empc: white;
+    --brdc: var(--empc);
+    --linkc: rgb(74, 152, 176);
+	--linkv: rgb(101, 198, 196);
+    --hic: hsl(0deg 0% 100% / 26%);
+}
+
+html {
+    background: black;
+	cursor: url(../cursors/main.png) 0 0, auto;
+	/* 
+	filter: brightness(72%) saturate(60%) sepia(58%) saturate(411%) hue-rotate(509deg) brightness(93%)
+	*/
+}
+
+body {
+	font-family: "light";
+	background: url(../assets/skska.png);
+	color: var(--textc);
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--empc) black;
+    background-size: 248px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+::selection {
+    background: var(--hic);
+}
+ 
+::-moz-selection {
+	background: var(--hic);
+	color: white;
+}
+
+
+a {
+    color: var(--linkc);
+	cursor: url(../cursors/link.png) 0 0, auto;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a:hover {
+    filter: brightness(320%);
+	cursor: url(../cursors/link.png) 0 0, auto;
+}
+
+a:visited{
+	color: var(--linkv);
+}
+
+hr {
+	border-color: var(--empc);
+}
+
+ul {
+  margin-left: 4ch;
+  list-style: square;
+}
+
+header{
+	text-align: center;
+	padding: 3ch;
+}
+
+header img {
+	width: auto;
+	max-width: 90vw;
+}
+
+footer {
+	text-align: center;
+	color: #aaa;
+}
+
+img {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+	user-select: none;
+}
+
+article {
+	width: 900px;
+	max-width: 90vw;
+	border: solid 1px white;
+	padding: 10px;
+	margin: 5ch auto;
+	background: black;
+	position: relative;
+}
+
+article:first-of-type {
+	margin: 0 auto;
+}
+
+article::before {
+	content: url(../assets/bcut.png);
+	position: absolute;
+	top: -2px;
+	left: -1px;
+}
+
+article::after {
+	content: url(../assets/tcut.png);
+	position: absolute;
+	bottom: -5px;
+	right: -1px;
+}
+
+/* absolute positioning is slightly different on firefox because of course it is */
+@-moz-document url-prefix() {
+	article::before {
+		content: url(../assets/bcut.png);
+		position: absolute;
+		top: -3px;
+		left: -1px;
+	}
+
+	article::after {
+		content: url(../assets/tcut.png);
+		position: absolute;
+		bottom: -6px;
+		right: -1px;
+	}
+}
+
+article sub {
+	position: absolute;
+	bottom: 0.5ch;
+	right: 10px;
+}
+
+article img {
+	max-width: 95%;
+	margin: 0 auto;
+	display: block;
+	height: auto;
+}
+
+p.proc {
+	text-align: center;
+	margin: 5px;
+}
+
+.centerme {
+	text-align: center;
+}

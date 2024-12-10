@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "alt";
+    src: url(../assets/pixel-font7.regular.ttf);
+}
+
+@font-face {
+    font-family: "light";
+    src: url(../assets/basis33.ttf);
+}
+
+/* Declare Vars */
+:root {
+    --bgc: black;
+    --textc: #d5fff5;
+    --empc: white;
+    --brdc: var(--empc);
+    --linkc: rgb(74, 152, 176);
+	--linkv: rgb(101, 198, 196);
+    --hic: hsl(0deg 0% 100% / 26%);
+}
+
+html {
+    background: black;
+}
+
+body {
+	font-family: "light";
+	background: url(../assets/skska.png);
+	color: var(--textc);
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--empc) black;
+    background-size: 248px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+::selection {
+    background: var(--hic);
+}
+ 
+::-moz-selection {
+	background: var(--hic);
+	color: white;
+}
+
+header{
+	text-align: center;
+	padding: 3ch;
+}
+
+header img {
+	width: 500px;
+	max-width: 90vw;
+	image-rendering: initial;
+	
+}
+
+footer {
+    text-align: center;
+    font-style: italic;
+    padding: 3ch;
+    color: gray;
+}
+
+.gallcon {
+    border-top: double white 6px;
+}

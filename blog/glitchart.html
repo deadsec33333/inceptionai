@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --> <!-- Artificially put mobile devices in desktop mode kinda, this shit doesnt scale down well!-->
+	<link rel="icon" href="https://cdn.discordapp.com/attachments/886105350309302292/937106510478213150/ico.png">
+	<title>You are not corrupted</title>
+	<link rel="stylesheet" href="../style/blogbw.css" media="all">
+	<style>html {
+			scroll-behavior: smooth;
+		}
+
+		video.centerme, img.centerme {
+		    margin: 0 auto;
+    		display: block;
+		}
+
+		.incd {
+			background-color: #111;
+		}
+
+		.simplegrid {
+			display: grid;
+			grid-template-rows: 1fr;
+			grid-column-gap: 0px;
+			grid-row-gap: 0px;
+			padding: 1ch !important;
+			align-items: center;
+		}
+
+		.simplegrid .centerme{
+			justify-self: center;
+		}
+
+		.simplegrid div {
+			padding: 0;
+		}
+
+		.grthree {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.grtwo{
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.gathree {
+			grid-template-columns: repeat(3, auto);
+		}
+
+		.gatwo{
+			grid-template-columns: repeat(2, auto);
+		}
+
+
+		.simplegrid img {
+			margin: 0;
+		}
+
+		.text h1 {
+			letter-spacing: 0.5ch;
+		}
+
+		.date {
+			letter-spacing: normal !important;
+		}
+
+		h2, h3, h4 {
+			letter-spacing: 3px;
+		}
+
+		.text video {
+			max-width: 95%;
+		}
+
+		div.sidenote {
+			padding:0.75ch;background-color: #111;border:double white 3px;margin-bottom: 2ch;
+		}
+
+		i.babynote {
+			font-size: smaller;
+			color: #aaa;
+		}
+
+		img.npx {
+			image-rendering: auto;
+		}
+
+		.cxr {
+			color: red
+		}
+
+		.gridgap {
+			grid-gap: 1ch;
+		}
+
+		.aligntop {
+			align-items: start;
+		}
+
+	</style>
+</head>
+<body>
+	<header>		
+	  <a href="https://omnipresence.neocities.org/">
+			<img src="../assets/vi.png" alt="">
+		</a>             
+	</header>
+	
+	<div class="text">
+		<h1 class="date">INDEX</h1>
+		<div>
+			<h3>Hyperlinks through this page for your quick-reference needs &lt;3</h3>
+			None of this stuff is really written to be read sequentially, just jump around to what you want to read!
+			<ul>
+				<li>
+					<a href="#INTRODUCTION">INTRODUCTION</a>
+				</li>
+				<li>
+					<a href="#FUND">FUNDAMENTALS/STYLIZING</a>
+					<ul>
+						<li>
+							<a href="#DITHERING">DITHERING</a>
+						</li>
+						<li>
+							<a href="#BLEND">BLENDING</a>
+						</li>
+						<li>
+							<a href="#LEVELS">LEVELS</a>
+						</li>
+						<li>
+							<a href="#GRADMAPS">GRADIENT MAPS</a>
+						</li>
+						<li>
+							<a href="#DISPLACE">DISPLACEMENT MAPS</a>
+						</li>
+						<li>
+							<a href="#EXPORT">EXPORTING (PROPERLY)</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#ANIMATION">ANIMATION</a>
+					<ul>
+						<li><a href="#ANIMIMPORT">IMPORTING FRAMES</a></li>
+						<li><a href="#ANIMEXPORT">EXPORTING AS A GIF</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#COMMANDS">COMMANDS</a>
+					<ul>
+						<li>
+							<a href="#FFMPEG">FFMPEG CONVERSIONS</a>
+						</li>
+						<li>
+							<a href="#IMGMGCK">IMAGEMAGICK TRICKS</a>
+						</li>
+						<li>
+							<a href="#MISCCMD">MISC COMMANDS</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<br>
+			And much more to come!!!
+		</div>
+	</div>
+
+	<div class="text">
+	<h1 class="date" id="INTRODUCTION"> INTRODUCTION </h1>
+		<div>
+			<h3>tldr; I am going to slowly be adding various blog posts about different glitch-art techniques and visual effects here!</h3> <hr>
+			<video controls class="centerme">
+				<source src="https://omni.vi/assets/glitch.mp4">
+			</video>
+			<br>
+			<p style="color:slategray; font-style: italic;" class="centerme">video credit to <a href="https://www.instagram.com/eerroneouss/">eerroneouss</a> on instagram</p>
+			<hr>
+			While Im not much of a tutorial-maker, hopefully I can compile some of the tricks I use into some byte-sized snipits of info you all could use to get into glitchart.
+			Considering the limited time I have to create glitchart and edits myself now, I really want to inspire people to create their own works. 
+			I have been surprised by the amount of questions and requests I've received regarding different techniques/tutorials. 
+			And I wouldn't be lying if I was also using this page as a personal diary of all the things I learned. 
+			I started making glitchart with nothing beyond a copy of photoshop and audacity and an ancient online sonification tutorial. Slowly I built up what I know soley by experimenting over the course of a few years. I don't exactly want to forget what I've learned either - a lot of these techniques are a weird combination of tricks that I stumbled upon by complete accident. That's the joy of glitchart though, it <i>should be</i> accidental! That being said, I hope these techniques assist your process or help with some stylization but I <u>strongly</u> encourage you to experiment and most importantly, have fun!
+			<hr>
+			A lot of this stuff is gonna be pretty trivial but I don't want there to be any barrier to entry with this medium, I hope you all find it helpful!
+			<br>
+		<br>
+		Also, if you have any questions / think I did a shit job writing parts of this feel free to message me on discord or instagram (@omnidisplay for both) &lt;3.
+		</div>
+	</div>
+
+
+	<div class="text">
+		<h1 class="date" id="FUND">Fundamentals/Stylizing</h1>
+		<div>
+		<h2>PREFACE</h2>
+		Before we dive into individual techniques, it's important to learn how to utilize your glitched assets to create stylized and coherent final pieces. 
+		While you're welcome to just glitch shit and call it a day, I personally work to highlight the interesting parts of a glitch while hiding the more grating and unpleasant artifacts. 
+		A lot of this is just basic image editing skills, but I think it'll be relevant to demonstrate what I often do to turn a fwuarked original into a polished work.
+		<br><br>
+		Now, a lot of these tricks and techniques are going to be very biased - this is going off a style I've personally developed over time, don't take these as hard rules for glitchart 
+		(there are no rules when it comes to glitchart) but rather little recommendations of ways in which you can improve the clarity of your work.
+		<br><br>
+		Everything that I'm going to mention here will (if applicable) have information for both Photoshop and GIMP. While I mainly use Photoshop for all my work, 
+		I still have massive respect for GIMP and believe that glitchart shouldn't be gate-kept behind any software. Hell, you could patch things up in MS paint for all I care!
+		<br>
+		<hr>
+		<h2 id="DITHERING">DITHERING</h2>
+		Probably one of the most distinctly recognizable final touches of my personal styles, dithering is responsible for that classic "pixel art" look of images. In short, dithering is a computers way of forming gradients with 
+		limited colours - it'll create the illusion of unique shades with patterns akin to that texture in newspaper prints (although that's called half toning, but it's a similar idea!). As old computers had limited 
+		colour palettes, dithering was often used in pixel art to add shading and depth to images - contributing to that now classic look.
+		<br><br>
+		The kind of dithering we're going to focus on is <a href="https://en.wikipedia.org/wiki/Ordered_dithering">ordered</a> dithering,
+	more specifically, Bayer Matrix dithering. This type of dithering has a much sharper pixel-perfect aesthetic that pairs especially well with animations (which we'll get to). If you want to see the difference between dithering algorithms,
+	<a href="https://en.wikipedia.org/wiki/Dither#Algorithms">wikipedia has a wonderful visual summary</a>
+		<br><br>
+		Before we begin, do note that I purposefully work in low resolutions, 540x540 or smaller, as to maintain a pixel-arty low-fidelity look to my images. I do not scale my works until the very end! Because of this, 
+		the dithering is significantly more noticeable. If you're following these steps and can barely notice the dithering patterns unless you zoom in super close, you're working with too big of an image!
+		<br>
+		<br>
+		<br>
+		<h3>DITHERING IN PHOTOSHOP</h3>
+		<!-- <div class="simplegrid gatwo" style="align-items: start;">
+			<p>For this demonstration, I'm going to be working with this simple rose image I stole off google. <br> <br>
+				To start, select <inline class="incd">Image &gt; Mode &gt; Indexed Color</inline> and click ok on "flatten layers". You should see a popup set of options like the one pictured rightside;
+			</p>
+			<img src="../assets/gat/basics/ps_rose_base.png" alt="" class="smallimg centerme"> <br>
+		</div> -->
+
+		<img src="../assets/gat/basics/ps_rose_base.png" alt="" class="smallimg flr"> <br>		
+		For this demonstration, I'm going to be working with this simple rose image I stole off google. <br> <br>
+		To start, select <inline class="incd">Image &gt; Mode &gt; Indexed Color</inline> and click ok on "flatten layers". You should see a popup set of options like the one pictured below;
+		
+		<br>
+		<div class="simplegrid gathree" style="image-rendering:initial;">
+			<img src="../assets/gat/basics/ps_indexed.png" alt="" class="autoimg" style="justify-self: right;image-rendering: auto;">
+			<img src="../assets/gat/basics/ps_flatten.png" alt="" class="autoimg" style="image-rendering: auto;">
+			<img src="../assets/gat/basics/ps_indexed_popup.png" alt="" class="autoimg" style="image-rendering: auto;">
+		</div>
+		<br>
+		From here, make sure to set <inline class="incd">dither</inline> to "Pattern", this corresponds to the Bayer dithering mentioned above. Cycle through the local/master palette modes to your taste, 
+		they all have a slightly different way of picking colours. Lastly, you can enter a number of colours you want to restrict the palette to - play around with this until you get the desired clarity vs retro balance you want. 
+		As a tip, you can also press the up/down arrows while the colours textbox is highlighted to bump the value up and down one.
+		<br><br>
+		<img src="../assets/gat/basics/rose_dither_og.png" alt="" class="autoimg centerme">
+		<i class="centerme" style="display: block; margin-top:0.3ch">Look at that cool dithered rose!</i>
+		<br>
+		Now you'll notice that photoshop doesn't let you do anything with this dithered image, all the tools are grayed out! We need to convert it back to RGB before we can do anything.
+		<br>
+		Also, if you want to bring the dithered image back into your original project, click the little lock on the dithered layer, copy it and spam control Z to get back to your pre-dither state and paste the layer back in.
+		<div class="simplegrid gathree">
+			<img src="../assets/gat/basics/ps_change_back_to_rgb.png" alt="" class="autoimg">
+			<img src="../assets/gat/basics/rose_dither_locked.png" alt="" class="autoimg">
+			<img src="../assets/gat/basics/rose_dither_layer_paste.png" alt="" class="autoimg">
+		</div>
+
+
+		<br><br>
+		A trick I'll often do to enforce flatter colours with dithering with just on shaded areas is to run the dithered image through a second dithering pass. This second pass will have less colours and dithering turned off. 
+		Doing this averages the dithered pattern colours to other existing ones - creating solid blocks of colour. 
+		<br><br>
+		<img src="../assets/gat/basics/rose_dither_second_pass.png" alt="" class="medimg centerme" style="max-width: 799px;">
+
+		<br>
+		<br>
+
+		Lastly, let's talk custom palettes. You can enforce a custom colour palette by selecting "custom" in the palette dropdown. From here you can click on individual tiles to pick the colours to compose this palette.
+		You can also export/load palettes from this!
+
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/ps_custom_palette.png" alt="" class="autoimg" style="justify-self: center;">
+			<img src="../assets/gat/basics/ps_custom_colourtable.png" alt="" class="autoimg" style="justify-self: center;">
+		</div>
+
+		<br>
+		If you're struggling for to find inspiration for your own palettes, try websites like <a href="https://coolors.co">coolors.co</a>! <br>
+		Additionally, I made a set of palettes to use with the <a href="https://omnipresence.neocities.org/stardust/gates">stardust</a> gallery, you're welcome to download and use them; <br><br>
+		<!-- not a virus :^) -->
+		<div style="padding:1ch; background-color: #111;border: double 3px white; margin: 1ch 0">Omni's "moonlight" colour palette ACT file downloads: <a href="../assets/gat/basics/Omni_-_Moonlight.ACT">Basic</a> <a href="../assets/gat/basics/moonlight_extended.act">Extended</a> <a href="../assets/gat/basics/Moonlight_256.act">256 Colour</a> <br></div>
+		<br>
+		Here's what our rose looks like with the moonlight palette loaded; <br><br>
+		<img src="../assets/gat/basics/moonlight_rose.png" alt="" class="medimg centerme" style="max-width: 799px;">
+
+		<!-- lol brbrbrbrbrbbrbrbrbrbrbrbrbbr -->
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<h3 id="GIMPDITHER">DITHERING IN GIMP</h3>
+		Dithering in GIMP is extremely similar to photoshop, you also simply go <inline class="incd">Image &gt; Mode &gt; Indexed</inline>. Then, set the <inline class="incd">Color dithering</inline> 
+		mode to "Positioned" for the Bayer-Matrix style dither. Then, play with the number of colours / custom palettes!
+
+		<div class="simplegrid gathree">
+			<img src="../assets/gat/basics/gimp_add_dither.png" alt="" class="autoimg">
+			<img src="../assets/gat/basics/gimp_positioned.png" alt="" class="autoimg">
+			<img src="../assets/gat/basics/gimp_dither_menu.png" alt="" class="autoimg">
+		</div>
+
+		<br>
+		Then, in order to start working with filters again, change the image mode back to RGB.
+		<br>
+		<br>
+		GIMPs dithering has one major difference from Photoshop - <u>GIMP doesn't merge the layers</u>. This is a double-edged sword - while it dithers and preserves every layer individually, it also samples every layer for the colour palette (instead of the 
+		composite image). This means that you can get some really awful colours for your dithered image, caused by other (often unseen) layers. For example, this is how GIMP will dither this lain image (the one I'll be using as an example in the next section);
+		<img src="../assets/gat/basics/gimp_shitdither.png" alt="" class="autoimg centerme">
+		<br>
+
+		<div class="simplegrid gatwo" style="margin-bottom: 0.75ch;">
+			<div style="align-self: start; padding: 0 1ch 0 0;">
+				To remedy this, duplicate your project with <inline class="incd">Ctrl+D</inline>, click an empty space in the layers box and select "New From Visible". Then, delete every layer except for the newly created composite one. Dither and copy this layer into your original project.
+				<br><br>
+				Doing this will instead make GIMP dither the image above to look much more consistent;
+			</div>
+			<img src="../assets/gat/basics/gimp_new_from_visible.png" alt="" class="smallimg">
+		</div>
+
+		<img src="../assets/gat/basics/gimp_decent_dither.png" alt="" class="autoimg centerme">
+
+		
+		<hr>
+		<div class="sidenote">For the remaining stylization tricks, I'm going to be working with <a href="../assets/gat/basics/omni_basics.psd">this</a> photoshop file, feel free to download and play around with it.</div>
+		<img src="../assets/gat/basics/lain_fwrkd.png" alt="" class="smallimg flr" style="max-width: 40ch;">
+		<h2 id="BLEND">BLEND MODES</h2>
+		<!-- <div class="simplegrid gatwo" style="grid-gap:2ch">
+			<div style="align-self: start;">
+				Check out this cool glitched image of Lain! Seems a bit harsh though, right? <br>
+				One trick we can use to restore some coherence to our glitched image is <i>blending</i> it with the source material.
+				Pasting in our original lain image and using the blend modes on the top of the layers stack let's us mix the two images together in interesting ways.
+				<p style="padding-left: 1ch;font-style: italic;font-size: smaller;">
+					In all honesty, I know nothing about how each blend
+					mode actually works - so I just encourage you to cycle through them until you achieve a blend that looks good!
+				</p>
+				<br>
+				Blend modes work the exact same in photoshop and gimp, it's the little dropdown above the layers.
+			</div>
+			<img src="../assets/gat/basics/lain_fwrkd.png" alt="" class="autoimg">
+		</div>
+		-->
+		Check out this cool glitched image of Lain! Seems a bit harsh though, right? <br>
+				One trick we can use to restore some coherence to our glitched image is <i>blending</i> it with the source material.
+				Pasting in our original lain image and using the blend modes on the top of the layers stack let's us mix the two images together in interesting ways.
+				<p style="padding-left: 1ch;font-style: italic;font-size: smaller;">
+					In all honesty, I know nothing about how each blend
+					mode actually works - so I just encourage you to cycle through them until you achieve a blend that looks good!
+		</p>
+		<div class="simplegrid gatwo" style="justify-items: center;align-items: start;">
+			<img src="../assets/gat/basics/ps_set_blend_mode.png" alt="" class="autoimg">
+			<img src="../assets/gat/basics/gimp_blend_modes.png" alt="" class="autoimg">
+		</div>
+
+
+		<div class="simplegrid gatwo" style="grid-gap:2ch; align-items: start;">
+			<div>
+				With our original image "hard light" blended into our glitched version, we now have a clearer image;
+				<img src="../assets/gat/basics/ps_lain_blended_og.png" alt="" class="autoimg centerme">
+			</div>
+			<div>
+				But nothing is stopping us from using blend modes like "subtract" to create stranger results!
+				<img src="../assets/gat/basics/ps_invert_blend.png" alt="" class="autoimg centerme">
+			</div>
+		</div>
+
+		<h2 id="LEVELS">LEVELS</h2>
+		Our image, even after blending, still has a ton of noise and unwanted artifacts. Especially the background! We want to focus on glitching Lain and it would be a pain to paint out that entire background. However, one thing that is handy 
+		(that comes with this asset and style) is that backgrounds and unwanted artifacts are often much darker than the main image. We can utilize this contrast with the levels adjuster, cranking up the shadows end of levels will average out those darker
+		pixels into a solid matte-black background - removing the noise and better highlighting our glitched Lain image.
+		<br>
+		<br>
+		Photoshop has the advantage of adjustment layers, a type of layer that will apply to the visible composite of everything below it. One of these adjustment layers being for levels. You can add it by clicking the little semicircles icon on the bottom of the layer stack
+		and selecting "levels". From here, drag the leftmost arrow on the histogram towards the center - notice how shadows in the image average out and become black. <br>
+		<i style="font-size: smaller;">You can also post the rightmose white slider over to average out highlights into pure white.</i> <br>
+		<i style="font-size: smaller;">To (destructively) apply levels to an individual layer you can go to Image &gt; Adjustments &gt; Levels </i>
+
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/ps_levels.png" alt="" class="autoimg centerme">
+			<img src="../assets/gat/basics/ps_levels_slider.png" alt="" class="autoimg centerme">
+		</div>
+
+		Just upping the shadows with levels a little bit instantly cleared out the weird noise in the background. This is especially helpful if you end up dithering your image, PS/GIMP will try to preserve the "detail" of this noise all the same, 
+		which can lead to some pretty ugly dither texture on your image. Worse still is that this texture is no longer darker than everything else - making it a real eyesore!
+		<div class="simplegrid gatwo" style="grid-gap:1ch">
+			<div>
+				Dithered, without levels <br>
+				<img src="../assets/gat/basics/ps_lain_dither_nl.png" alt="" class="autoimg centerme">
+			</div>
+			<div>
+				Dithered, with levels <br>
+				<img src="../assets/gat/basics/ps_lain_dither_wl.png" alt="" class="autoimg centerme">
+			</div>
+		</div>
+		<br>
+		Unfortunately, GIMP doesn't have adjustment layers. In order to achieve a similar effect, we'll have to do a little work-around. Similar to what we did for dithering a composite image, we need to click in the layers box
+		and select "New From Visible". From here, go to <inline class="incd">Colors &gt; Levels</inline>. The popup levels adjuster is very similar to photoshop, just pull the leftmost black arrow towards the center. This levels effect will
+		apply to just the composite image layer you just made, meaning that you'll have to redo this process if you change anything about your pre-levels image. <br>
+		<i style="font-size: smaller;">GIMP does have the cool advantage that you can use levels while in the "Indexed"/Dithered image mode - and it'll snap the shadow levels to your palette.</i>
+		<div class="simplegrid gatwo" style="grid-gap:1ch">
+			<!-- HOW THE FUCK DO I CENTER A DIV!?!?!?!?!?!??!?!?!?!? -->
+			<div style="text-align: center;">
+				<img src="../assets/gat/basics/gimp_new_from_visible.png" alt="" class="autoimg centerme">
+				<img src="../assets/gat/basics/gimp_add_levels.png" alt="" class="autoimg" style="margin: 0 auto;">
+			</div>
+			<img src="../assets/gat/basics/gimp_levels_slider.png" alt="" class="autoimg centerme">
+		</div>
+		<br>
+		<br>
+		<h2 id="GRADMAPS">GRADIENT MAPS</h2>
+		Now we have a cool piece going, but I'm not exactly a fan of the turd-brown colourscheme we have. We could of-course use a custom palette for our dithering, but that doesn't give us a ton of interactive control of colourizing our
+		image in an interesting way. Instead, gradient-maps are a great method of colouring our image! As you could imagine from the name, gradient maps <i>map</i> different brightness levels of an image to a gradient. Photoshop gives a ton of control over the gradient
+		we're mapping to with its gradient-editor, allowing us to completely change the look of our image. 
+		<br><br>
+		Similar to levels, a gradient map can be applied as an adjustment layer in Photoshop. From here, double-click on the gradient rectangle in the properties tab to open the gradient editor. By default, (usually a b/w 2-colour gradient) the leftmost end is
+		mapped to black and the rightmost to white. Double-clicking the little coloured boxes under the gradient will allow you to change the colours. Clicking under the bar anywhere else will add a new marker for another colour.
+		<div class="simplegrid gathree">
+			<img src="../assets/gat/basics/ps_add_gradmap.png" alt="" class="autoimg">
+			<div>
+				double click the gradient here :^)
+				<img src="../assets/gat/basics/ps_doubleclickthis.png" alt="" class="autoimg"></div>
+				<img src="../assets/gat/basics/ps_gradslider.png" alt="" class="autoimg">
+		</div>
+		Now...
+		<div class="simplegrid gatwo" style="grid-gap:2ch">
+			<div>
+				You can be boring and just add a black to single colour gradient for just a monochromatic look.
+				<img src="../assets/gat/basics/ps_gradmap_1.png" alt="" class="centerme autoimg">
+			</div>
+			<div>
+				Or you can get quite creative. Notice my sudden jump to black in the middle of the gradient, this is done to map the midtones used for Lain's eyes to a darker colour and make them stand out.
+				<img src="../assets/gat/basics/ps_gradmap_2.png" alt="" class="centerme autoimg">
+			</div>
+		</div>
+
+		GIMP is capable of applying gradient maps as a filter, but I suck at it sorry :^). <a href="https://docs.gimp.org/2.10/en/gimp-gradient-dialog.html">Here's their documentation on their gradient stuff xd</a>
+		<br>
+		<br>
+		<br>
+		<h2 id="DISPLACE">DISPLACEMENT MAPS</h2>
+		All this looks cool but still feels a bit... flat. After all this cleanup and colour mapping it still just feels like picture of lain with a glitchy image over it. We want her to <i>feel</i> glitchy, she needs some texture herself!
+		A great way of achieving some glitching <i>distortions</i> is with a displacement map. To add a displacement map in PS, go to <inline class="incd">Filter &gt; Distort &gt; Displace</inline> and then select a photoshop file to use as the map,
+		whatever the current composite image from the file is will be the contents of the displacement map, images with a lot of contrast will result in harsher distortions.
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/ps_displace.png" alt="" class="autoimg">
+			<div>
+				Here is the result of me displacing to a random other project file I had.
+				<img src="../assets/gat/basics/ps_displaced_lain_rdm.png" alt="" class="autoimg">
+			</div>
+		</div>
+		Wow! That looks cool but feels a bit random (because it is). If you want the distortions to feel more like they're associated with your glitched base, use that glitched base as the map!
+		<div class="simplegrid gatwo" style="align-items: start; grid-gap:1ch">
+			<div>
+				For a moment lets hide our blended lain image to reveal that glitchy goodness underneath, keeping all the filters on to maintain lots of contrast. <br>
+				<img src="../assets/gat/basics/ps_hide_lain.png" alt="" class="autoimg" style="text-align: center;"> <br>
+				Save our project in this state, and then unhide our lain image. <u>Dont save again</u>, we want to use the fwarked project preview as our displacement map! Now, we can apply a displacement map to our lain overlay - using 
+				this project as the map file.
+				<br>
+				This will result in a distorted Lain that feels properly glitched <i>by</i> the surrounding moshed texture with little blocks coming off her shoulders that match the surrounding texture.
+			</div>
+			<div>
+				<img src="../assets/gat/basics/ps_fwarked_nolain.png" alt="" class="smallimg">
+			</div>
+		</div>
+		<div style="text-align: center;padding:0;">
+			Now that's starting to look great!
+			<img src="../assets/gat/basics/ps_displaced_lain_fraog.png" alt="" class="medimg centerme">
+			<br>
+			Lastly, let's throw some dithering on it to bring this whole project together;
+			<img src="../assets/gat/basics/final_lain_displaced.png" alt="" class="medimg centerme">
+			<i class="babynote" style=" width: 65%; display: block; margin: 0 auto; ">
+				One thing to be wary of when dithering is sometimes you're not getting pure blacks, notice the slight red hue of the bg here. This can be fixed by enabling "force black/white" in the PS dither controls or 
+				by adding levels after dithering.
+			</i>
+		</div>
+		<br>
+		Displacement maps are actually nicer to work with in GIMP, giving you interactive controls of the intensity and source images. To apply a displacement map in GIMP, go to
+		<inline class="incd">Filters &gt; Map &gt; Dispace</inline>, select the layer you want to displace by in for Aux1/2 input and play around with the intensity sliders. The Aux input can be from 
+		any open file, so if you want to displace by something other than a layer in your current project, open the image in a new project tab and it'll show up as an option.
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/gimp_add_displace.png" alt="" class="smallimg" style="max-width: 40ch;">
+			<img src="../assets/gat/basics/gimp_displacement.png" alt="" class="autoimg">
+		</div>
+
+		<hr>
+		<br>
+		<h2 id="EXPORT">EXPORTING</h2>
+		Recall at the very start I mentioned that I work in 540x540p and scale up to 1080x1080 as my last step. We want this scale to remain pixel-perfect, meaning no blurring or aliasing that 
+		would break the retro feel. To do this, I use "Export as" (under File). From here, we can tell Photoshop to scale the final result up 200% (or more). From here you also need to <u>set the resample mode to nearest neighbor</u>, this integral 
+		to preventing any blurring or aliasing. Also, make sure you're only doing whole number scales (no 150%'s) - otherwise you'll get weird distortions from only parts of the images being stretched.
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/ps_exportas.png" alt="" class="autoimg centerme">
+			<img src="../assets/gat/basics/ps_export_nn.png" alt="" class="autoimg centerme">
+		</div>
+		<br>
+		In GIMP, go to <inline class="incd">Image &gt; Scale Image</inline>, set the image to your desired scale (remember whole number scales only, you might have to use a calculator) and <u>set interpolation to none</u>, which does
+		the same thing as Nearest Neighbor in PS.
+		<div class="simplegrid gatwo">
+			<img src="../assets/gat/basics/gimp_scale.png" alt="" class="autoimg centerme">
+			<img src="../assets/gat/basics/gimp_scale_nt.png" alt="" class="autoimg centerme">
+		</div>
+
+		<hr>
+
+		Well, that was a lot of information! Remember, this isn't a ruleset for how you should edit your glitchart, just some tips for stylization under the framework of how I make my edits. Hopefully some part of this was helpful
+		and have fun!
+		<br>
+		<br>
+		Here is the final product, I ended up preferring the original image more than the displaced one (but it did make a good example);
+		<img src="../assets/gat/basics/fin540.png" alt="" class="autoimg centerme">
+		<br>
+		<footer>Last Updated: 13.02.2024</footer>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	<div class="text">
+		<h1 class="date" id="ANIMATION">ANIMATION</h1>
+		<div>
+			<h2>Preface/Intro</h2>
+			Using animation is a great way to make a glitch feel lively and dynamic, and it just looks plain cool! A lot of the same principles mentioned above
+			still apply to animations, you can blend with the source material, apply filters etc - so I encourage you to read the <a href="#FUND">fundamentals</a> writing first if you haven't already.
+			<br><br>
+			As some simple ways you can create the basis for a basic animation, you can apply glitches to a series of frames or a video, you can repeat a glitch with different 
+			parameters/intensities to give movement to the glich, or, if your glitch has a degree of random/noise to it, you can just repeat it as-is. Also, you totally can do a combination of these things! 
+			<br><br>Here are some examples of old pieces I've made with these different bases;
+
+			<div class="simplegrid gatwo" style="grid-template-columns: auto min(540px, 65%);"> <!-- ripped my hair out trying to get this sized right for no good reason -->
+				<div style="padding:1ch">
+					Variation of intensity to make the glitch feel like it was stretching out. I also utilized the random noise of this effect and made a couple frames at max 
+					intensity to give the illusion of movement from the lines changing about.
+				</div>
+				<img src="../assets/gat/anim/rip_apart.gif" alt="" class="autoimg" style="    max-width: 540px;">
+				<div style="padding:1ch">
+					Simply utilizing random variation in the glitch to acheive that staticy vibe :)
+				</div>
+				<img src="../assets/gat/anim/dont_wait.gif" alt="" class="autoimg" style="max-width: 540px;">
+			</div>
+			<br>
+			<div class="sidenote">I'll eventually write another article going into depth with the actual techniques I use to <i>make</i> my animations, especially as I mainly use AE now for most of them. So stay tuned &lt;3. </div>
+<br>
+			Well, these tricks for making frames don't mean anything until you actually know how to compile your glitched frames into a cool gif! Thats what the majority of this section is going to be about, getting stuff and imported and exported 
+			through PS/GIMP in a way that you'll have good looking gifs. 
+
+			
+
+			<hr>
+			<h1 class="centerme" id="ANIMIMPORT">IMPORTING STUFF FOR YOUR ANIMATION</h1>
+			<hr>
+			Alright, I have a bunch of cool glitched frames from a scene in SEL, now I want to stitch them together to create a sweet animation.
+			<br>
+
+
+			<div class="simplegrid grtwo" style="align-items: start;">
+				<div style="padding:0.5ch">
+					In other words, I want to get from this...
+					<img src="../assets/gat/basics/anim_files.png" alt="" class="autoimg">
+				</div>
+				<div style="padding:0.5ch">
+					to this...
+					<img src="../assets/gat/basics/anim_compile.gif" alt="" class="autoimg">
+				</div>
+			</div>
+			<hr>
+			<h2>IMPORTING IN PHOTOSHOP</h2>
+			<div class="simplegrid gatwo">
+				<h3 class="centerme cxr">Before any of this, make sure you have the "timeline" window open!</h3>
+				<img src="../assets/gat/basics/ps_show_timline.png" alt="" class="autoimg centerme">
+			</div>
+			<br>
+			To turn our folder of images into a frame-by-frame animation in photoshop you... <br><br>
+			Go to <inline class="incd">File &gt; Scripts &gt; Load Files into Stack</inline> and select your files (shift click/drag select)...
+			<br>
+			<div class="simplegrid gatwo gridgap aligntop">
+					<img src="../assets/gat/basics/ps_load_files_into_stack.png" alt="" class="medimg npx">
+					<img src="../assets/gat/basics/ps_select_files.png" alt="" class="medimg npx">
+			</div>
+			<br>
+			In the timeline window, click "Create Frame Animation" (this may be the default button, otherwise click the arrow).
+			Once the timeline is created, click the 3 lines on the far left side of the timeline editor and select "Make Frames From Layers"
+			<div class="simplegrid gatwo gridgap aligntop">
+				<img src="../assets/gat/basics/ps_create_frame_animation.png" alt="" class="medimg npx">
+				<img src="../assets/gat/basics/ps_make_frames_from_layers.png" alt="" class="medimg npx">
+			</div>
+			<br>
+			You should now have a nice timeline like this;
+			<img src="../assets/gat/basics/ps_timeline.png" alt="" class="npx largimg">
+			<br>
+			<strong>A couple things to note</strong>
+			<ul>
+				<li>
+					Photoshop frame animations work by having different layers visible for each frame, by default it hides everything except the layer associated with each frame. If you click on each frame you will notice the eyeball 
+					ascending the layer tree.
+				</li>
+				<li>
+					PS will propogate changes you make to the first frame to other layers, if you want to add adjustment layers that effect the entire animation make sure you add it and set it's params with the first frame selected.
+					Otherwise, the effect/state will only apply to the current frame you're on.
+					<br>
+					The same goes if you want to add an overlay image over the entire animation, if you add a new layer and draw on it in frame 1 that layer will be visible for the entire animation. (You can undo this by hiding it while on the other frames)
+				</li>
+				<li>
+					The above cannot be said the same way for the state of layers, if you edit a layer that change is universal - individual frames don't have a state for the layers, they only keep track of filter info (blend modes, adjustment layers, opacity etc).
+				</li>
+			</ul>
+			<br>
+			<h3>Photoshop is also capable of importing videos!</h3>
+			<div class="simplegrid gatwo aligntop gridgap">
+				<div>
+					Just use open with!!!
+					<br>
+					With this, Photoshop will instead use the "video timeline", which acts somewhat like a rudamentary Premeire Pro (or any video editor really) timeline. 
+					Adding other layers (other videos, images, adjustment layers) will show up as a layer on the timeline too. You can adjust when it's visible by dragging the borders of the layer in the timeline editor.
+					<br>
+					This timeline also has basic keyframing tech, but that's something we'll have to touch on later!
+					<br>
+					<br>
+					<i class="babynote">In all honesty this is what I mainly do now, I mosh videos or work in AE to get my glitches, and import them into photoshop for some final touches.</i>
+				</div>
+				<img src="../assets/gat/basics/open_video_with_ps.png" alt="" class="autoimg npx flr">
+			</div>
+			<img src="../assets/gat/basics/ps_vid_with_extra.png" alt="" class="autoimg npx centerme">
+			<br>
+			<br>
+			<h2>Importing in GIMP</h2>
+			Go to <inline class="incd">File &gt; Open As Layers</inline> and select the your files (shift click).
+			<div class="simplegrid gatwo gridgap">
+				<img src="../assets/gat/basics/open_as_layers_gimp.png" alt="" class="autoimg npx">
+				<img src="../assets/gat/basics/gimp_open_as_layers_select.png" alt="" class="autoimg npx">
+			</div>
+			That's it! GIMP handles animations very differently (and a lot simpler) than photoshop, every single layer is a frame. You have no control over whats visible on each frame, GIMP simply goes up each layer on succession and makes them visible.
+			<br>
+			A majority of the control of how the GIF is render will come from the export params, which leads us to...
+			<br>
+			<br>
+			<hr>
+			<h1 class="centerme" id="ANIMEXPORT">DITHERING AND EXPORTING GIFS</h1>
+			<hr>
+            If you plan on working with gifs, dithering is inevitable. Gifs only support a maximum of 256 colours, meaning that dithering is often used when creating them. But the typical dithering for GIFs is ugly! 
+            The GIFs you find on giphy and tenor typically use noisy dithering algorithms like Floyd-steinberg which is why they often look fuzzy. So once again, we're going to focus on using that nice and clean bayer matrix dithering for our exporting.
+			<br>
+			<br>
+			I'm only going to talk about how to export and some of the quirks of each interface, I strongly recommend you read the <a href="#DITHERING">dithering</a> section of this guide if you haven't already.
+            <br><br>
+			<h2>Exporting GIFs in Photoshop</h2>
+			Everything we need to dither and export our gif is in the "Save for Web" dialogue. Navigate to <inline class="incd">File &gt; Export &gt; Save For Web (Legacy)</inline> to open it. From here you should see a window like the one below;
+			<div class="simplegrid gatwo">
+				<img src="../assets/gat/basics/save_for_web.png" alt="" class="autoimg npx">
+				<img src="../assets/gat/basics/web_export_window.png" alt="" class="autoimg npx">
+			</div>
+			To get that nice bayer matrix dither, set the dither mode to "Positioned" from the 2nd dropdown. Similar to the dithering controls for still images, you can also change the method in which photoshop picks the 
+			colours from the first dropdown (play around with this to get your favourite!) and the number of colours to dither by is controlled from the <incline class="incd">colors</incline> dropdown.
+			<div class="simplegrid gatwo">
+				<img src="../assets/gat/basics/ps_gif_positioned.png" alt="" class="autoimg npx">
+				<img src="../assets/gat/basics/moonp_4b.png" alt="" class="autoimg npx">
+			</div>
+			<br>
+			The colour table section is extremely similar to the static dithering menu, you can click on colours to edit the palette. Additionally, you can click the 3 lines to import a custom palette.
+			<br>
+			<br>
+			<br>
+			<h2>Exporting GIFs in GIMP</h2>
+			To enforce our own dithering scheme for GIFs exported from GIMP, we have to dither beforehand, in the exact same fashion that <a href="#GIMPDITHER">you dither still images</a>. Navigate to <inline class="incd">Image &gt; Mode &gt; Indexed...</inline> and dither how you'd like.
+			<br> After dithering, go to <inlince class="incd">File &gt; Export As...</inlince> and in the export dialogue, change the file ending to <inline class="incd">.gif</inline>.
+			<div class="simplegrid gatwo">
+				<img src="../assets/gat/basics/gimp_export_as.png" alt="" class="autoimg centerme">
+				<img src="../assets/gat/basics/gimp_file_ending_gif.png" alt="" class="autoimg centerme">
+			</div>
+			<br>
+			After this, GIMP will provide you with the GIF export dialogue, make sure to check "As Animation" and play with the parameters below. <br>
+			<img src="../assets/gat/basics/gimp_as_animation.png" alt="" class="autoimg centerme"> <br>
+			Frame disposal 99% of the time should be replace (one frame per layer), this will make every frame assigned to one layer and one layer only. Combine will progressively stack layers for every frame, if you have a gif with transparency this will result in being able to see old frames below the current one. 
+			<div class="simplegrid grtwo">
+				<img src="../assets/gat/basics/shoreline.gif" alt="" class="autoimg">
+				<img src="../assets/gat/basics/shoreline_no_rep.gif" alt="" class="autoimg">
+				<div class="centerme">With Replacement</div>
+				<div class="centerme">With Combine</div>
+			</div>
+			<hr>
+			And that's it! Now you have a cool dithered gif of your glitchart! If you want to get from this back to a video, make sure to reference these <a href="#FFMPEG">ffmpeg commands</a> I also have posted.
+
+			<footer>Last Updated: 16.02.2024</footer>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+	<div class="text">
+		<h1 class="date" id="COMMANDS">COMMANDS</h1>
+		<div>
+			<h2>Compiled below are assorted commands I often use for making my works and converting them into nice post-friendly formats</h2> <br>
+			ffmpeg, imagemagick and other cli tools are absolutely your friend when it comes to this medium. You shouldn't expect nice GUI programs to nicely handle and convert files in the ways you need for glitchart, especially when it comes to preserving pixel-perfect videos!
+			<hr>
+			<h2 id="FFMPEG">FFMPEG CONVERSIONS</h2>
+			<i style="font-size:small;">Note that I'm assuming that you already have <a href="https://ffmpeg.org/download.html">ffmpeg installed and ready to go.</a> All of these commands work the same regardless of the OS you're using</i> <br> <br>
+			A ton of the work I do is in gif form originally, so I need a nice way to convert from gifs to video while preserving crisp-pixels! <br> <br>
+			Lets start with the basic, ol' reliable command and break it down;
+			<blockquote data-title="gif to mp4" style="font-size: smaller;">
+				<br>
+				ffmpeg -i input.gif -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -sws_flags neighbor -b:v 50M output.mp4
+			</blockquote>
+			We can ignore the <inline class="incd">-pix_fmt yuv420p</inline> junk, thats just for the mp4 encoding. What matters here is the -vf, -b:v and -sws arguments. 
+			The weird /2 then *2 truncate for the scale factor clips off weird pixels and generally makes ffmpeg happier to convert. Second, the -b:v __M argument is specifying 
+			the <a href="https://en.wikipedia.org/wiki/Bit_rate#Video">bitrate</a> we want to export at, a higher number means better quality at the expense of a larger file-size. 
+			Lastly, <inline class="incd">-sws_flags neighbor</inline> tells ffmpeg to maintain pixel-perfect clarity, meaning no aliasing or blurring of the pixels.
+
+			<br> <br>
+
+			The effect of <inline class="incd">-sws_flags neighbor</inline> isn't particularly noticeable now, but it will be if we <i>scale the gif</i>. 
+			I usually make my gifs in 540x540p, and scale them to 1080x1080p for instagram videos, and I need that scale to simply double-up the pixels and not lead to any weird blurring. 
+			We can slightly modify the command above to get that *2 scaling, just remove the /2! <br>
+			<i style="font-size: small;">And ofc you can also do *3+ instead if you're working even smaller!</i>
+			<blockquote data-title="gif to scaled mp4" style="font-size: smaller;">
+				<br>
+				ffmpeg -i input.gif -pix_fmt yuv420p -vf "scale=trunc(iw)*2:trunc(ih)*2" -sws_flags neighbor -b:v 50M output.mp4
+			</blockquote>
+			The difference can be very slight, but I promise adding the neighbor flag helps greatly with preserving a pixel-artly or harshly digital look. Here's a comparison of two videos with and without the neighbor flag, can you spot the difference?
+			<img src="../assets/neighbor_compare.png" alt="" class="centerme smallimg">
+			<br>
+			If our gif has transparency, ffmpeg will automatically fill in the alpha with white. If we want to preserve transparency to layer things together, we have to use a different video format - in particular <a href="https://en.wikipedia.org/wiki/QuickTime_File_Format">quicktime</a>. Quicktime has the advantage of supporting an alpha channel, disadvantage being .mov files are fucking massive - nearly double the file size compared to mp4 (with the same convert params). So make sure to clean up your test-renders when you're done with them :) <br>
+			<blockquote data-title="gif to mov with alpha" style="font-size: smaller;">
+				<br>
+				ffmpeg -i base.gif -c:v qtrle -pix_fmt argb -b:v 50M -vf "scale=trunc(iw)*2:trunc(ih)*2" -sws_flags neighbor output.mov
+			</blockquote>
+			Again, most of this can be ignored as just encoding garbage. But do take particular note of the <inline class="incd">-pix_fmt argb</inline> flag; the <i>a</i> in <i>argb</i> is telling ffmpeg to add an alpha channel to the output!
+			<br><br>
+			<img src="../assets/mov.png" alt="" class="centerme largimg">
+			<br>
+			<br>
+			<h3>One last misc ffmpeg trick...</h3>
+			If you want to pull all of the frames out of a video, you can use this command;
+			<blockquote data-title="extract frames" style="font-size: smaller;">
+				<br>
+				ffmpeg -i *.mp4 -qscale:v 2 output_%03d.jpg
+			</blockquote>
+			This is very helpful if you have a technique for images but want to animate it, or if you want to make a gif from a video clip. (tip: you can use GIMPs "import as layers" and shift click to get every frame batch loaded)
+
+			<hr>
+			<h2 id="IMGMGCK">IMAGEMAGICK TRICKS</h2>
+			<i style="font-size:small;"> Again assuming you already have <a href="https://imagemagick.org/script/download.php">imagemagick installed</a> </i> <br> <br>
+			While a ton of these tricks can be done just in PS/GIMP etc, they can be helpful in a pinch or for batch-image manipulation. Also, as I am far from an expert,
+			I'd recommend you read the <a href="https://imagemagick.org/index.php">ImageMagick docs</a> to learn about this powerful tool. But here are some commands I
+			occasionally use!
+			<br><br>
+			ImageMagick Dither Image or Gif
+			<blockquote data-title="dither image" style="font-size: smaller;">
+				<br>
+				convert -colorspace gray -ordered-dither o8x8 input.png output.png
+				<br><br>
+				convert -colorspace gray -ordered-dither o8x8 input.gif output.gif
+			</blockquote>
+			<br>
+			This command is what I call "ping-ponging" a gif, it will stitch a reversed version of a gif on it's end - causing the animation to bounce back to the starting frame. This is super helpful for lazy loops.
+			<blockquote data-title="ping-pong a gif" style="font-size: smaller;">
+				<br>
+				convert input.gif -coalesce -duplicate 1,-2-1 -loop 0 pong.gif
+			</blockquote>
+
+			<div class="simplegrid gatwo" style="align-items: start;">
+				<div style="padding:0.5ch">
+					<p class="centerme">Without the "pong" effect;</p>
+					<img src="../assets/nopong.gif" alt="" class="centerme autoimg">
+				</div>
+				<div style="padding:0.5ch">
+					<p class="centerme">With the "pong" effect;</p>
+					<img src="../assets/pong.gif" alt="" class="centerme autoimg"> <br>
+				</div>
+			</div>
+
+			If you want to convert the frames you just extracted into a gif, you can use ImageMagick for that too.
+			Although, I don't usually recommend this method as it gives you far less control over how the gif is made.
+			<br>
+			<i style="font-size: smaller;">Also note that (for some reason) many image previewers dislike how these gifs come out and may render them weirdly.</i>
+			<blockquote data-title="frames to gif" style="font-size: smaller;">
+				<br>
+				convert -delay 1 -loop 0 *.png output.gif
+			</blockquote>
+			The <inline class="incd">*.png</inline> is targetting all pngs in the folder you're currently in, so make sure to <inline class="incd">cd</inline> into the right spot. This ofc also means that you can change that file ending to match with other formats! <br> <br>
+			You can also add dithering during this process...
+			<blockquote data-title="frames to 1-bit dithered gif" style="font-size: smaller;">
+				<br>
+				convert -colorspace gray -ordered-dither o8x8 -delay 1 -loop 0 *.png output.gif
+			</blockquote>
+			<br>
+			If you have a gif with transparency, you can use this command to quickly add a background colour. Just replace #000000 with whatever colour hex code you want.<br>
+			<i style="color:slategray; font-size: smaller;">Note that this is designed for fish-shell, this may require some tweaking for bash, powershell etc.</i>
+			<blockquote data-title="add background colour" style="font-size: smaller;">
+				<br>
+				for f in *.png <br>
+        		&nbsp; convert -colorspace gray -flatten -background "#000000" -ordered-dither o8x8 $f $f <br>
+    			end
+			</blockquote>
+			<br>
+			<hr>
+			<h2 id="MISCCMD">MISC COMMANDS</h2>
+			This command is designed for powershell, if you're sonificating a series of images and want to batch-convert them to png, you can use this command. (post on sonification to be written soon maybe)
+			<blockquote data-title="ps batch rename/convert" style="font-size: smaller;">
+				<br>
+				Get-ChildItem *.raw | Rename-Item -NewName { $_.Name -replace '\.raw$','.tiff'} <br>
+				# then you can run... <br>
+				convert *.tiff %03d.png
+			</blockquote>
+			<footer>Last Updated: 12.02.2024</footer>
+		</div>
+	</div>
+
+
+
+
+	<!-- I literally use the copyright footer to make my shit sound more official and cool I really don't care xddddd-->
+	<footer>
+	~ Feel free to copy &lt;3, 2024 Omni ~ 
+	</footer>
+</body>
+</html>

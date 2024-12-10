@@ -1,0 +1,21 @@
+@font-face {
+	font-family: "main";
+	src: url(../../assets/basis33.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--fgc: white;
+	--bgc: black;
+}
+
+body {
+	background: var(--bgc);
+	color: var(--fgc);
+	font-family: "main";
+	image-rendering: pixelated;
+}

@@ -1,0 +1,155 @@
+@font-face {
+    font-family: "light";
+    src: url(../assets/basis33.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+	scroll-snap-type: y proximity;
+	cursor: url(../cursors/main.png) 0 0, auto;
+}
+
+/* Declare Vars */
+:root {
+    --bgc: black;
+    --textc: #d5fff5;
+    --empc: white;
+    --brdc: var(--empc);
+    --linkc: rgb(74, 152, 176);
+	--linkv: rgb(101, 198, 196);
+    --hic: hsl(0deg 0% 100% / 26%);
+}
+
+body {
+	font-family: "light";
+	background: black;
+	color: var(--textc);
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--empc) black;
+    background-size: 248px;
+    background-attachment: fixed;
+	/* overflow: hidden; */
+}
+
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+::selection {
+    background: var(--hic);
+}
+ 
+::-moz-selection {
+	background: var(--hic);
+	color: white;
+}
+
+.con {
+	/* border: double white 4px; */
+	font-size: 1.5em;
+	text-align: center;
+	width: 95vw;
+	max-width: 100ch;
+	position: absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%, -50%)
+}
+
+.con .masks {
+	max-width: 100%;
+	width: 512px;
+	image-rendering: pixelated;
+	margin-bottom: 3ch;
+	border-radius: 15px;
+}
+
+.con strong {
+	letter-spacing: 1ch;
+}
+
+.con h3 {
+	letter-spacing: 1ch;
+}
+
+.con i {
+	font-size: 1.4rem;
+	color: #848484;
+}
+
+.con a {
+	text-decoration: none;
+	color: white !important;
+	padding: 1ch 0ch;
+	border: solid white 2px;
+	display: block;
+	margin-top: 1ch;
+	margin: 0 auto;
+	position: relative;
+	width: 412px;
+	max-width: 92vw;
+}
+
+.con a:hover::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: 0;
+	color: black;
+	background: white;
+}
+
+a {
+    color: var(--linkc);
+    text-decoration: underline;
+  	cursor: url(../cursors/link.png) 0 0, auto;
+}
+
+hr {
+	border: 1px dashed;
+	margin: 2ch;
+	
+}
+
+.proceed:hover {
+	border-color: lime;
+	color: lime !important;
+}
+
+.proceed:hover::after {
+	background-color: lime !important;
+}
+
+.return:hover {
+	border-color: orangered;
+	color: orangered !important;
+}
+
+.return:hover::after {
+	background-color: orangered !important;
+}
+
+.tracklist:hover {
+	border-color: #7169aa;
+	color: #7169aa !important;
+}
+
+.tracklist:hover::after {
+	background-color: #7169aa !important;
+}
+

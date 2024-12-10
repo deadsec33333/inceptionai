@@ -1,0 +1,321 @@
+@font-face {
+	font-family: "main";
+	src: url(../../assets/basis33.ttf);
+}
+
+@font-face {
+	font-family: "bc";
+	src: url(../assets/Code-39-Logitogo.ttf)
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bgc: black;
+	--fgc: white;
+	--active: lime;
+	--focus: yellow;
+	--focusalt: rgb(168, 168, 168);
+	--back: orangered;
+	--alt: #7169aa;
+
+	--fail: orangered;
+	--accept: #45d545;
+
+	--overlaycolor: var(--accept);
+	
+	--filter: none;
+}
+
+body {
+	font-family: "main";
+	background-color: var(--bgc);
+	color: var(--fgc);
+	 /* for firefox */
+	 scrollbar-width: thin;
+	 scrollbar-color: var(--empc) black;
+	 background-size: 248px;
+	 background-attachment: fixed;
+	 image-rendering: pixelated;
+}
+
+html {
+	cursor: url(../../cursors/main.png) 0 0, auto;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+.container {
+    text-align: center;
+    width: 95vw;
+    font-size: 1.5em;
+    max-width: 100ch;
+    margin: 0 auto;
+	padding-bottom: 5.5rem; /* gap out footer */
+}
+
+form.auth {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+form.auth input[type="text"], form.auth input[type="password"] {
+	font-family: "main";
+	font-size: 1.2rem;
+	color: var(--fgc);
+	background-color: rgba(0,0,0,0);
+	border: none;
+	border-bottom: 2px solid var(--fgc);
+	text-align: center;
+	width: 412px;
+	max-width: 92vw;
+
+	/* hide for focus */
+	outline: none;
+}
+
+form.auth input:focus {
+	border-color: var(--focus) !important;
+	color: var(--focus) !important;
+}
+
+form.auth input:hover {
+	color: var(--focusalt);
+	border-color: var(--focusalt);
+}
+
+form.auth input:focus::placeholder {
+	color: var(--bgc);
+}
+
+form.auth input:focus + label {
+	color: var(--focus) !important;
+}
+
+form.auth input:hover + label {
+	color: var(--focusalt);
+}
+
+form.auth label {
+	width: 412px;
+	max-width: 92vw;
+	text-align: right;
+	font-size: 1rem;
+	margin-bottom: 3ch;
+	color: var(--fgc);
+}
+
+#password {
+	font-family: "bc";
+	padding-bottom: 3px;
+}
+
+.btn {
+	color: var(--fgc);
+	background: var(--bgc);
+	padding: 1ch 0ch;
+	font-family: "main";
+	font-size: 1.2rem;
+	border: solid var(--fgc) 2px;
+	position: relative;
+	width: 340px;
+	max-width: 92vw;
+	margin-top: 2ch;
+	cursor: url(../../cursors/link.png) 0 0, auto;
+	letter-spacing: 0.5ch;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.btn:hover::after, #login:focus::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	top: -1px;
+	left: 0;
+}
+
+#login::after {
+	background: var(--active);
+}
+
+#back::after {
+	background: var(--back);
+}
+
+#login:hover, #login:focus {
+	border-color: var(--active);
+	color: var(--active);
+	outline: none;
+}
+
+#back:hover {
+	border-color: var(--back);
+	color: var(--back);
+}
+
+#info:hover {
+	border-color: var(--alt);
+	color: var(--alt);
+}
+
+#info:hover::after {
+	background-color: var(--alt);
+}
+
+
+
+
+
+.portal {
+	filter: var(--filter);
+	max-width: 100%;
+}
+
+
+.incorrect {
+	animation: shake 1s linear normal;
+}
+
+@keyframes shake {
+    0% {
+		transform: translate(-1%);
+    }
+    16% {
+        transform: translate(1%);
+    }
+    33% {
+        transform: translate(-2%);
+    }
+    50% {
+        transform: translate(1%);
+    }
+    66% {
+        transform: translate(-1%);
+    }
+    83% {
+       transform: translate(1%);
+    }
+    100% {
+        transform: translate(0%);
+    }
+} 
+
+
+
+/* stupid shit for the footer to work as expected, will be at very bottom of screen if room, otherwise pushed off */
+
+#pain{
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	margin-bottom: -2.5rem; /* lmao */
+}
+
+footer {
+    text-align: center;
+    color: darkgray;
+	letter-spacing: 0.3ch;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+}
+
+
+
+/* anim time */
+
+.hiddencon * {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.portal {
+	pointer-events: all;
+}
+
+.hiddencon .portal {
+	opacity: 1;
+	transform: translateY(25%);
+	cursor: pointer;
+}
+
+/* .hiddencon .portal:hover {
+	transition: all 0.5s ease-in-out !important;
+	transform: translateY(25%) rotate(10deg);
+} */
+
+#con * {
+	transition: all 2s ease-in-out;
+	transition-property: opacity, transform;
+}
+
+
+/* colour overlay, works everywhere except firefox (lol) */
+.acc::after {
+    content: '';
+    background: var(--overlaycolor);
+    width: 101vw;
+    height: 101vh;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    mix-blend-mode: darken;
+    /* opacity: 0.5; */
+}
+
+
+/* override some of the other vars in this state for better colours */
+.acc {
+	--active: var(--fgc);
+	--focus: var(--fgc);
+}
+
+
+
+/* fuck firefox all my homies hate firefox */
+@-moz-document url-prefix() {
+
+	.acc {
+		--fgc: var(--overlaycolor);
+		--active: var(--overlaycolor);
+		--focus: var(--overlaycolor);
+		--focusalt: var(--overlaycolor);
+		--back: var(--overlaycolor);
+		--alt: var(--overlaycolor);
+	}
+
+	.acc::after {
+		background-color: transparent;
+	}
+
+
+	.acc #con .portal {
+		filter: sepia(1) saturate(1000) hue-rotate(59.8deg);
+	  }
+
+	.fire #con .portal {
+		filter: sepia(1) hue-rotate(-46deg) saturate(700) brightness(0.9);
+	}
+
+  }

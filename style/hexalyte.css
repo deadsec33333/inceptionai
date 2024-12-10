@@ -1,0 +1,138 @@
+@font-face {
+    font-family: "alt";
+    src: url(../assets/pixel-font7.regular.ttf);
+}
+
+@font-face {
+    font-family: "light";
+    src: url(../assets/basis33.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Declare Vars */
+:root {
+    --bgc: black;
+    --textc: #d5fff5;
+    --empc: white;
+    --brdc: var(--empc);
+    --linkc: rgb(74, 152, 176);
+	--linkv: rgb(101, 198, 196);
+    --hic: hsl(0deg 0% 100% / 26%);
+}
+
+html {
+    background: black;
+	cursor: url(../cursors/main.png) 0 0, auto;
+}
+
+body {
+	font-family: "light";
+	font-size: 1.5em;
+	background: url(../assets/skska.png);
+	color: var(--textc);
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--empc) black;
+    background-size: 248px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+	image-rendering: pixelated;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+::selection {
+    background: var(--hic);
+}
+ 
+::-moz-selection {
+	background: var(--hic);
+	color: white;
+}
+
+a {
+    color: var(--linkc);
+	cursor: url(../cursors/link.png) 0 0, auto;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a:hover {
+    filter: brightness(320%);
+	cursor: url(../cursors/link.png) 0 0, auto;
+}
+
+a:visited{
+	color: var(--linkv);
+}
+
+
+img {
+	max-width: 90vw;
+  display: block;
+  margin: 0 auto;
+}
+
+.centerme {
+	text-align: center;
+}
+
+footer {
+	font-size: 0.75em;
+	text-align: center;
+}
+
+.biggap {
+	display: block;
+	width: 100%;
+	height: 45vh;
+}
+
+.tblock {
+    text-align: left;
+    letter-spacing: 0.5ch;
+    width: 100ch;
+    max-width: 90vw;
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    padding: 0 0 4ch 0;
+}
+
+#music {
+	position: fixed;
+    top: 0;
+    right: 0.5ch;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 2.5rem;
+    transform: rotate(
+18deg);
+}
+
+#teabox {
+    text-align: center;
+    letter-spacing: 1.5ch;
+    background-color: black;
+    max-width: 100ch;
+    width: 100vw;
+    margin: 0 auto;
+    /* margin-top: 3ch; */
+    box-shadow: 0 0 15px 20px #000000;
+}

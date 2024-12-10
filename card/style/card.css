@@ -1,0 +1,193 @@
+@font-face {
+	font-family: "main";
+	src: url(../../assets/basis33.ttf);
+}
+
+@font-face {
+	font-family: "alt";
+	src: url(../assets/babyblue.ttf);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+:root {
+	--bgc: black;
+	--fgc: white;
+
+}
+
+body {
+	font-family: "alt";
+	/* background: url(../../assets/skska.png); */
+	background: var(--bgc);
+	color: var(--fgc);
+	background-size: 248px;
+    background-attachment: fixed;
+	font-size: 12pt;
+	overflow-x: hidden;
+}
+
+#container {
+	background-color: var(--bgc);
+	width: 120ch;
+	max-width: 90vw;
+	margin: 2vw auto;
+	border: solid 2px white;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 100%;
+	/* grid-template-rows: repeat(2, 1fr); */
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+#container.max {
+    width: 99vw;
+    max-width: 100vw;
+	height: -webkit-fill-available;
+    min-height: 98vh;
+    margin: 0 auto;
+	grid-template-rows: 22px auto auto;
+}
+
+#container.max #banner {
+	background-size: cover;
+	aspect-ratio: unset;
+}
+
+#titlebar {
+    text-align: right;
+    background: url(../assets/tile.png);
+    height: 22px;
+    border-bottom: 4px solid white;
+    outline: solid 2px black;
+    outline-offset: -2px;
+}
+
+#titlebar img {
+	cursor: pointer;
+}
+
+#banner {
+	border-bottom: solid 2px white;
+	margin-bottom: 30px;
+	background: url(../assets/banner.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat:no-repeat;
+	aspect-ratio: 6/1;
+	display: flex;
+	align-items: end;
+	justify-content: center;
+}
+
+#pfp {
+	position: relative;
+	display: block;
+	bottom: -30px;
+	border-radius: 86px;
+	max-width: 100%;
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 1) 30px, rgba(0, 0, 0, 0) 30px);
+}
+
+#pfpcon {
+	max-width: 33%;
+}
+#subcon {
+	padding: 3ch;
+	padding-top: 0;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+#subcon h1 {
+	font-size: 48pt;
+	font-family: "alt";
+}
+
+#subcon h3 {
+	font-size: 12pt;
+	font-family: "alt";
+	color: gray;
+}
+
+#subcon h2 {
+	font-size: 24pt;
+	margin-top: 1.5ch;
+	margin-bottom: 0.5ch;
+}
+
+.desc {
+	text-align: left;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto auto auto;
+}
+
+#mar {
+	transform: translateY(-0.25ch); /* cursed */
+	cursor: default;
+}
+
+hr {
+	margin: 2ch 0;
+}
+
+.flexy {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+
+.cell {
+	border: solid 2px white;
+	padding: 1ch;
+	font-size: 1.3rem;
+	margin: 5px;
+	text-decoration: none;
+	position: relative;
+	color: #C0C0C0;
+	flex-grow: 1; 
+	min-width: 25%;
+	font-family: "main";
+	letter-spacing: 0.15ch;
+	display: inline-grid;
+	cursor: pointer;
+}
+
+.cell:hover::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: 0;
+	color: black;
+	background: white;
+}
+
+sub {
+	font-size: 9pt;
+}
+
+#tooltip {
+	visibility: hidden;
+	background: var(--bgc);
+	border: solid white 1px;
+	outline: solid black 3px;
+	padding: 0.5ch;
+}
+
+
+/* mobile users dont get to see my sweet freaking tooltip */
+@media (hover: none) {
+	#tooltip {
+		display: none !important;
+	}
+}

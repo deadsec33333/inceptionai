@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>Alethiometer</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="https://cdn.discordapp.com/attachments/886105350309302292/937106510478213150/ico.png">
+</head>
+
+<body>
+	<div class="intent">
+		Clear your thoughts, channel your intent. Prod the oracles eye for sights anew.
+	</div>
+	<!--
+		I have seen the Magna Carta
+		I have seen the eye of Horus
+		This shit
+		AINT NOTHIN TO ME MAN
+	-->
+
+	<!-- THE OUTER RUNES -->
+	<div class="wrapper" id="runesWrapper">
+		<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+			<g id="outerRunes" class="delayedFade">
+				<text x="50" y="9.25" style="dominant-baseline:hanging; text-anchor:middle; font-size:3pt;">䷀</text>
+				<text x="85" y="30" style="dominant-baseline:central; text-anchor:end; font-size:3pt;">䷁</text>
+				<text x="85" y="70" style="dominant-baseline:central; text-anchor:end; font-size:3pt;">䷂</text>
+				<text x="50" y="90" style="dominant-baseline:auto; text-anchor:middle; font-size:3pt;">䷃</text>
+				<text x="15" y="30" style="dominant-baseline:central; text-anchor:start; font-size:3pt;">䷅</text>
+				<text x="15" y="70" style="dominant-baseline:central; text-anchor:start; font-size:3pt;">䷋</text>
+			</g>
+		</svg>
+	</div>
+
+
+	<!-- THE HEXAGONS -->
+	<!-- May Ærj forgive me for only using 3 decimal places.-->
+	<div class="wrapper hexWrapper">
+		<div class="hexagon hex2" id="hex2">
+			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50,5 88.971,27.5 88.971,72.5 50,95 11.029,72.5 11.029,27.5"
+					style="fill:none;stroke-width:0.5" />
+			</svg>
+		</div>
+	</div>
+	<div class="wrapper hexWrapper">
+		<div class="hexagon" id="hex1">
+			<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+				<polygon points="50,5 88.971,27.5 88.971,72.5 50,95 11.029,72.5 11.029,27.5"
+					style="fill:none;stroke-width:0.5" />
+			</svg>
+		</div>
+	</div>
+
+
+
+	<!-- THE ELEMENTS/CART DIAMOND -->
+	<div class="wrapper" id="cartWrapper">
+		<svg class="cart" id="diamond" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round"
+			fill-rule="evenodd" fill="none" viewBox="0 0 1000 1000">
+			<g>
+				<path d=" M 0,-100 L 100,0 L 0,100 L -100,0 L 0,-100" stroke="#fafafa" stroke-width="2"
+					style="transform: translate(50%,50%);"></path> <!-- translate to force to center -->
+				<g style="transform: translate(50%, 50%) rotate(90deg);">
+					<path d=" M 0,0"></path>
+					<g transform="scale(0.5 0.5)" id="eye">
+						<path d=" M 0,0"></path>
+						<path id="eyeball"
+							d=" M 0,-86.603 Q 31.521,-68.404 43.969,-34.202 Q 56.418,0 43.969,34.202 Q 31.521,68.404 0,86.603 Q -31.521,68.404 -43.969,34.202 Q -56.418,0 -43.969,-34.202 Q -31.521,-68.404 0,-86.603 M 50,0 Q 50,20.711 35.355,35.355 Q 20.711,50 0,50 L 0,50 Q -20.711,50 -35.355,35.355 Q -50,20.711 -50,0 L -50,0 Q -50,-20.711 -35.355,-35.355 Q -20.711,-50 0,-50 L 0,-50 Q 20.711,-50 35.355,-35.355 Q 50,-20.711 50,0 L 50,0 M 25,0 Q 25,10.355 17.678,17.678 Q 10.355,25 0,25 L 0,25 Q -10.355,25 -17.678,17.678 Q -25,10.355 -25,0 L -25,0 Q -25,-10.355 -17.678,-17.678 Q -10.355,-25 0,-25 L 0,-25 Q 10.355,-25 17.678,-17.678 Q 25,-10.355 25,0 L 25,0"
+							stroke="#fafafa" stroke-width="4">
+						</path>
+					</g>
+				</g>
+			</g>
+
+			<!-- AAAAAA -->
+			<text x="501" y="395" style="dominant-baseline:text-after-edge; text-anchor:start;" fill="white" class="element">⚳</text>
+			<text x="400" y="495" fill="white" style="text-anchor:middle;" class="element">⚴</text>
+			<text x="615" y="495" fill="white" style="text-anchor:start;" class="element">⚵</text>
+			<text x="501" y="595" style="dominant-baseline:hanging;" fill="white" class="element">⚸</text>
+
+		</svg>
+	</div>
+
+
+	<div id="tooltip">
+		error, please refresh.
+	</div>
+
+	<script src="alethio.js"></script>
+</body>
+
+</html>

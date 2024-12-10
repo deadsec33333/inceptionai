@@ -1,0 +1,304 @@
+#container {
+	display: flex;
+	flex-direction: row; /* default for desktop, switch to column on verti */
+	flex-wrap: nowrap; /* "wrap" might be a reasonable alternative to switching the direction maybe */
+	justify-content: normal;
+	align-items: normal;
+	align-content: normal;
+	height: 100vh;
+}
+
+#container div {
+	scrollbar-width: none; /* pranked */
+}
+
+#display {
+    display: block;
+    width: 1080px;
+    height: 100%;
+    min-width: fit-content;
+    /* overflow-y: hidden; */
+    overflow: auto;
+    background-color: var(--bgc);
+	/*display: flex;
+	justify-content: center;
+	align-items: center; */
+}
+
+#display img {
+	width: 1080px;
+	cursor: zoom-in;
+}
+
+#gallery {
+	background-color: var(--bgc);
+	overflow: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: baseline;
+    align-content: flex-start;
+
+	border-left: double black 8px;
+	gap: 4px;
+}
+
+#gallery img {
+	flex-grow: 1;
+	max-width: 512px;
+	height: auto;
+	aspect-ratio: 1;
+}
+
+#gallery img:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+@media only screen and (max-width: 1350px) {
+/* @media (orientation: portrait) or (max-width: 1350px){ */
+	#container {
+		flex-direction: column;
+	}
+
+	#display {
+		/* min-height: min(75vh, 100vw); /* actually nefarious */
+		min-height: min(calc(100vh - 512px), 100vw); /* even MORE nefarious */
+		max-height: 100vw; /* we're so fucking back */
+		/* overflow: hidden; */
+		width: 100vw;
+		display: block; /* ref justification for height thing */
+	}
+
+	#display img {
+		max-width: 100%;
+		/* to center it the non-flexy way */
+		display: block;
+		margin: 0 auto;
+	}
+
+	#gallery img {
+		width: 25%;
+	}
+
+	#gallery {
+		border-left: none;
+		height: calc(100vh - 45vw); /* I literally have no idea how this works but this will squish it down on those tiny landscape screens */
+	}
+
+}
+
+@media only screen and (max-height: 1080px) { /* due to the flexbox centering the shit will be pushed off-screen otherwise */
+	#display { 
+		display: block;
+	}
+}
+
+
+
+
+
+/* misc extra fun stuff */
+
+#header {
+	width: 100%;
+	border:1px white solid;
+	border-top: none;
+	font-size: 1.25rem;
+  padding: 2ch;
+	overflow: hidden; /* needed for some reason */
+}
+
+#header hr {
+	margin: 2ch 0;
+}
+
+.sechead {
+	width: 100%;
+	border: solid 1px var(--fgc);
+	padding: 1ch;
+	font-size: 1.3rem;
+    background: url(../../assets/tile.png);
+	text-align: center;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+
+.sechead > b {
+    background: black;
+    padding: 1ch;
+    color: var(--fgc);
+    font-weight: 100;
+    border-left: double var(--fgc);
+    border-right: double var(--fgc);
+	user-select: none;
+	cursor: default;
+}
+
+#desc {
+	font-size: 1.3rem;
+	overflow-wrap: anywhere;
+    width: 100%;
+	text-align: center;
+}
+
+#desc h1 {
+	text-align: center;
+}
+
+
+#controls {
+	position: absolute;
+	bottom: 7ch;
+	left: 7ch;
+	z-index: 9999999;
+}
+
+#controls a {
+	border: solid 2px white;
+	user-select: none;
+	cursor: pointer !important;
+	padding: 1ch;
+	font-size: 1.3rem;
+}
+
+#controls a {
+	color: var(--fgc);
+	background: var(--bgc);
+	padding: 1ch;
+	font-family: "main";
+	font-size: 1.2rem;
+	border: solid var(--fgc) 2px;
+	position: relative;
+	width: 8ch;
+	cursor: url(../../cursors/link.png) 0 0, auto;
+	letter-spacing: 0.5ch;
+	display: inline-block;
+	text-decoration: none;
+	margin: 0.5ch;;
+	text-align: center;
+}
+
+#controls a:hover::after {
+	content: "";
+	background-color: var(--fgc);
+	position: absolute;
+	width: 100%;
+	height: 3px;
+	top: -1px;
+	left: 0;
+}
+
+.button {
+	cursor: pointer;
+}
+
+/* desktop default, use corner buttons */
+.sechead .button {
+	display: none;
+}
+
+@media only screen and (max-width: 1350px) {
+.sechead .button {
+	display: inline;
+	background: black;
+    padding: 1ch;
+    color: var(--fgc);
+    font-weight: 100;
+    border-left: double var(--fgc);
+    border-right: double var(--fgc);
+}
+#controls {
+	display: none;	
+}
+}
+
+
+
+/* loading indicator */
+#display::before {
+    content: attr(data-state);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2.5rem;
+	background-color: var(--bgc);
+}
+
+
+/* search stuff styling */
+#filtercon {
+	text-align: center;
+}
+
+#namesearch {
+	display: inline-block;
+	max-width: 80%;
+}
+
+#namesearch input[type="text"] {
+	font-family: "main";
+	font-size: 1.2rem;
+	color: var(--fgc);
+	background-color: rgba(0,0,0,0);
+	border: none;
+	border-bottom: 2px solid var(--fgc);
+	text-align: center;
+	width: 412px;
+	max-width: 92vw;
+
+	/* hide for focus */
+	outline: none;
+	max-width: 100%;
+}
+
+.filterbt {
+	cursor: pointer;
+	background: none;
+	outline: none;
+	border: solid 1px var(--fgc);
+	color: var(--fgc);
+	font-family: "main";
+	font-size: 1.2rem;
+	margin-top: 1ch;
+	padding: 0.8ch;
+}
+
+#perf, .details {
+	font-style: italic;
+	color: gray;
+	font-size: smaller;
+}
+
+
+
+/* pain for an extremely niche screen ratio that this doesn't work for */
+/* on small landscape screens (small enough to trigger the vert layout, make the image gallery tucked down and show on hover to make room for the main preview */
+/* this is the best compromise I could think of that didn't intrude too much on the original css */
+@media only screen and (max-width: 1350px) and (orientation: landscape) {
+	#display {
+		min-height: 100vh;
+	}
+
+	body {
+		overflow: hidden;
+	}
+
+	#gallery {
+		height: 100vh;
+		position: absolute;
+		bottom: calc(-100% + 42px);
+	}
+
+	#gallery.active {
+		bottom: -30%;
+	}
+
+	.igt {
+		cursor: pointer !important;
+	}
+
+}

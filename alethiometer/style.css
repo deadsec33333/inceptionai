@@ -1,0 +1,435 @@
+/* Only used for the colour rn */
+:root {
+	--fgc: #f3f3f3;
+}
+
+@font-face {
+    font-family: "main";
+    src: url(../assets/spectral.extrabold.ttf);
+}
+
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+/* Universal */
+
+/* Wrapper used to center objects, provide consistent container sizing to base viewport pos on */
+.wrapper {
+	position: absolute;
+	width: min(80vw, 80vh);
+	height: min(80vw, 80vh);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	perspective: 1000px;
+	/*mix-blend-mode: difference;*/
+}
+
+/* necessary for the mouseover for the runes and click for the eye to work becauze z-indexes are voodoo */
+/* somehow this still lets the eye button work while preventing it from preventing hover detection on our runes*/
+#hex1, #hex2, .hexWrapper, #cartWrapper {
+	pointer-events: none;
+}
+
+
+
+/* ---- Hexagons --------------------- */
+
+/* basic styling */
+.hexagon svg {
+	stroke: var(--fgc);
+}
+
+.hexagon,
+svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* used to trigger, setup for basic animation */
+.hexagon {
+	transform-style: preserve-3d;
+	animation: rotate 5s forwards 1 ease-in-out;
+	/* default animation, hex2 overrides this */
+	transform: scale(50%);
+}
+
+/* For the opening animation of hex2 */
+.hex2 {
+	animation: rotate_noreturn 2.5s forwards 1 ease-in-out;
+	animation-delay: 2.5s;
+}
+
+/* 
+These two classes are toggled between to animate them in-out, 
+either hexagon will have either class at a time 
+*/
+.hexreturn {
+	animation: rot_return 2.5s forwards 1 ease-in-out;
+	animation-delay: 0;
+}
+
+.hexout {
+	animation: rotate_noreturn 2.5s forwards 1 ease-in-out;
+	animation-delay: 0;
+}
+
+
+/* Keyfraes for these animations */
+/* only used for the initial hex1 animation, this is the two-phase one that goes in and out */
+@keyframes rotate {
+	0% {
+		transform: scale(50%);
+	}
+
+	50% {
+		transform: rotate(240deg) scale(80%);
+		;
+	}
+
+	100% {
+		transform: rotate(0deg) scale(50%);
+	}
+}
+
+@keyframes rotate_noreturn {
+	0% {
+		transform: scale(50%);
+	}
+
+	100% {
+		transform: rotate(240deg) scale(80%);
+		;
+	}
+}
+
+@keyframes rot_return {
+	0% {
+		transform: rotate(240deg) scale(80%);
+		;
+	}
+
+	100% {
+		transform: rotate(0deg) scale(50%);
+	}
+}
+
+
+
+
+
+
+
+/* ------ Inner Diamond -------------------- */
+
+
+/* basic shit for colours, disable pointer events for everything except the eye */
+svg#diamond, svg#diamond g path {
+	stroke: var(--fgc);
+	color: var(--fgc);
+}
+
+svg#diamond .element {
+	fill: var(--fgc);
+	cursor: default;
+}
+
+#eye {
+	pointer-events: all;
+	cursor: pointer;
+}
+
+#eye.noclick {
+	pointer-events: none;
+	cursor: not-allowed;
+}
+
+.element {
+	fill: #fafafa;
+	translate: -13px 10px;
+	font-size: 32px;
+	user-select: none;
+}
+
+
+#eyeball {
+	transition: all 0.25s;
+}
+
+#eyeball:hover {
+	stroke: #fefefe;
+}
+
+
+/* used for the initial animation, can't use the id to target for some reason */
+.cart {
+	animation: cartspin, basicspin;
+	animation-duration: 2.5s, 2.5s;
+	animation-delay: 0s, 2.5s;
+	animation-iteration-count: 1, 1;
+}
+
+/* these classes are swapped between in JS to trigger a spin */
+.basicspin {
+	animation: sespin 2.5s forwards 1 ease-in-out;
+	animation-delay: 0s;
+}
+
+.inspin {
+	animation: inspin 2.5s forwards 1 ease-in-out;
+	animation-delay: 0s;
+}
+
+
+
+/* Keyframes for initial "bootup" animation of the diamiond  */
+@keyframes cartspin { /* 3d spin out */
+	100% {
+		transform: rotate3d(1, 0, 0, 0deg) rotate(0deg);
+	}
+
+	0% {
+		transform: rotate3d(1, 0, 0, 75deg) rotate(360deg);
+	}
+}
+
+@keyframes basicspin { /* the following rotation, I have no idea why 0%, 0% works but dont change it */
+	0% {
+		transform: rotate(0deg);
+	}
+
+	0% { /* somehow this works and makes it spin the right way */
+		transform: rotate(360deg);
+	}
+
+}
+
+
+
+/* 
+Keyframes linked to the toggled class spin events, they have to be this weird inverse 
+of eachother to keep the direction consistent, dont ask, I dont know either 
+*/
+
+@keyframes inspin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% { /* somehow this works and makes it spin the right way */
+		transform: rotate(-360deg);
+	}
+
+}
+
+@keyframes sespin {
+	0% {
+		transform: rotate(360deg);
+	}
+
+	100% { /* somehow this works and makes it spin the right way */
+		transform: rotate(0deg);
+	}
+}
+
+
+
+/* -- Outer Hexagrams ----------------------------------------------------- */
+
+/* basic styling */
+#outerRunes {
+	fill: var(--fgc);
+}
+
+#outerRunes text:hover {
+	/* DO NOT TRY TO DO TRANSFORMS WITH SVG TEXT - WORST MISTAKE OF MY LIFE */
+	/* transform: rotate(5deg); */
+	filter: brightness(1.1);
+	/* transition: all 0.5s; */ 
+	cursor: pointer;
+}
+
+/* opening "boot" animation class, overridden/deleted by JS when the other fade anim classes are toggled */
+#outerRunes.delayedFade {
+	opacity: 0;
+	pointer-events: none;
+	animation: fadeTextIn 1.5s forwards ease-in-out;
+	animation-delay: 4s;
+}
+
+/* these classes are toggled between as part of the JS-activated spin animation */
+#outerRunes.fadeOut {
+	animation: fadeTextOut 1.5s forwards ease-in-out;
+	animation-delay: 0s;
+}
+
+#outerRunes.fadeIn {
+	opacity: 0;
+	animation: fadeTextIn 1.5s forwards ease-in-out;
+	animation-delay: 0s;
+
+}
+
+/* keyframes */
+@keyframes fadeTextOut {
+	0% {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	100% {
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+@keyframes fadeTextIn {
+	0% {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	100% {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+/* Intent, the info text at the start, uses the same keyframes as above for boot anim to remove reduncancy */
+.intent {
+	position: absolute;
+	color: var(--fgc);
+	top: 2ch;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 1.6em;
+	font-weight: bolder;
+	width: 80vw;
+	text-align: center;
+	opacity: 0;
+	animation: fadeTextIn 1.5s forwards ease-in;
+	animation-delay: 4s;
+}
+
+
+/* tooltip, self explainitory */
+#tooltip {
+	color: var(--fgc);
+	position: absolute;
+	border: double 3px var(--fgc);
+	padding: 0.5ch;
+	font-size: 1.25em;
+	font-weight: bolder;
+	background-color: black;
+	pointer-events: none;
+	display: none;
+}
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+/* Complex garbage you'll never touch */
+body::before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(../assets/noiseX.gif);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+	box-shadow: inset 0px 0px 10em rgba(0, 0, 0, 0.4);
+	mix-blend-mode: color-burn;
+	overflow: hidden;
+}
+
+
+/* Basic Garbage you'll never touch */
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: black;
+	font-family: "main";
+}
+
+html {
+	overflow: hidden;
+}
+
+
+
+
+/* I FUYCKING HATEY FIREROFOCXX AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
+@-moz-document url-prefix() {
+    #outerRunes text:hover {
+		filter: none !important;
+		cursor: pointer;
+		fill: white !important;
+	}
+
+	/* for some fucking reason firefox positions this one and this one alone wrong */
+	.element:nth-of-type(1) {
+		translate: -10px -4px !important;
+	}
+
+	
+	/* opening "boot" animation class, overridden/deleted by JS when the other fade anim classes are toggled */
+	#outerRunes.delayedFade {
+		opacity: 1;
+		fill-opacity: 0;
+		pointer-events: none;
+		animation: MZfadeTextIn 1.5s forwards ease-in-out;
+		animation-delay: 4s;
+	}
+
+	/* these classes are toggled between as part of the JS-activated spin animation */
+	#outerRunes.fadeOut {
+		opacity: 1;
+		animation: MZfadeTextOut 1.5s forwards ease-in-out;
+		animation-delay: 0s;
+	}
+
+	#outerRunes.fadeIn {
+		opacity: 1;
+		fill-opacity: 0;
+		animation: MZfadeTextIn 1.5s forwards ease-in-out;
+		animation-delay: 0s;
+
+	}
+}
+
+/* for some god-forsaken reason, Firefox will BLUR the text if you use opacity, so we use fill-opacity instead. */
+
+	@-moz-keyframes MZfadeTextOut {
+		0% {
+			fill-opacity: 1;
+			pointer-events: all;
+		}
+
+		100% {
+			fill-opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	@-moz-keyframes MZfadeTextIn {
+		0% {
+			fill-opacity: 0;
+			pointer-events: none;
+		}
+
+		100% {
+			fill-opacity: 1;
+			pointer-events: all;
+		}
+	}

@@ -1,0 +1,230 @@
+@font-face {
+    font-family: "alt";
+    src: url(../assets/pixel-font7.regular.ttf);
+}
+
+@font-face {
+    font-family: "light";
+    src: url(../assets/basis33.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+	scroll-snap-type: y proximity;
+	cursor: url(../cursors/main.png) 0 0, auto;
+}
+
+/* Declare Vars */
+:root {
+    --bgc: black;
+    --textc: #d5fff5;
+    --empc: white;
+    --brdc: var(--empc);
+    --linkc: rgb(74, 152, 176);
+	--linkv: rgb(101, 198, 196);
+    --hic: hsl(0deg 0% 100% / 26%);
+}
+
+body {
+	font-family: "light";
+	background: url(../assets/skska.png);
+	color: var(--textc);
+    /* for firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--empc) black;
+    background-size: 248px;
+    background-attachment: fixed;
+	/* overflow: hidden; */
+}
+
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    color: var(--empc);
+    background-color: var(--empc);
+}
+
+::selection {
+    background: var(--hic);
+}
+ 
+::-moz-selection {
+	background: var(--hic);
+	color: white;
+}
+
+
+a {
+    color: var(--linkc);
+    text-decoration: underline;
+  	cursor: url(../cursors/link.png) 0 0, auto;
+}
+
+a:visited{
+	color: var(--linkv);
+}
+
+hr {
+	border-color: var(--empc);
+}
+
+#container {
+	position: fixed;
+	top: 40%;
+	z-index: -1;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#h{
+	/* font-family: monospace; */
+	text-align: center;
+	/* white-space: pre; */
+	/* Have two entries since not all browsers support min() for font size
+	 * added !important to make sure preferred option comes before fallback */
+	font-size: min(14px, 1.4vh) !important;
+    color: white;
+	letter-spacing: -0.3ch;
+	user-select: none;
+	text-decoration: none;
+	display: block;
+}
+
+#h > img {
+	width: 500px;
+	max-width: 95vw;
+	text-align: center;
+}
+
+.buttons {
+	font-size: 3rem;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.buttons a {
+	display: block;
+	height: 50px;
+}
+
+.buttons a:hover {
+	filter: brightness(80%);
+}
+
+.buttons a:nth-child(2) {
+	transform: translateY(1ch);
+}
+
+.buttons a img {
+	height: inherit;
+}
+
+
+.content {
+	background-color: var(--bgc);
+	width: 95%;
+	max-width: 120ch;
+	margin: 0 auto;
+	font-size: 1.5em;
+	text-align: center;
+	margin-top: 105vh;
+	height: 90vh;
+	margin-bottom: 5vh;
+	border: double 5.5pt var(--empc);
+	overflow: auto;
+    scroll-snap-align: start;
+}
+
+.content div {
+	padding: 5ch;
+	font-size: 1.3rem;
+}
+
+.flexy {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.cell {
+	border: solid 1px white;
+	padding: 1ch;
+	font-size: 1.3rem;
+	margin: 5px;
+	text-decoration: none;
+	position: relative;
+	color: #C0C0C0;
+	flex-grow: 1; 
+	min-width: 25%;
+}
+
+.cell:hover::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: 0;
+	color: black;
+	background: white;
+}
+
+.sechead {
+	width: 100%;
+	border: solid 1px white;
+	padding: 1ch;
+	font-size: 1.3rem;
+	margin: 5px;
+	margin-top: 3ch;
+    background: url(../assets/tile.png);
+}
+
+.sechead > b {
+    background: black;
+    padding: 1ch;
+    color: white;
+    font-weight: 100;
+    border-left: double white;
+    border-right: double white;
+}
+
+#hide {
+    background: none;
+    font-size: 2.7rem;
+    font-family: 'light';
+    color: white;
+    outline: none;
+    border: none;
+    transform: translateX(-50%);
+    left: 50%;
+	  text-decoration: none !important;
+}
+
+#hide img {
+	height: 50px;
+	transform: translateX(-1px);
+}
+
+#hide img:hover {
+	filter: brightness(80%);
+}
+
+/* Mobile Devices */
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+    /* ... */
+    	html {
+    	scroll-snap-type: none !important;
+    	}
+}
+
